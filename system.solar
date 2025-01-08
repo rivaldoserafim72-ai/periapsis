@@ -3,8 +3,6 @@
 	"isPlanet": false,
 	"luma": 0.004,
 	"age": 5000,
-	"trueLuma": 0.004,
-	"WD": false,
 	"isPrimary": true,
 	"planets": [
 		{
