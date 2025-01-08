@@ -1,0 +1,64 @@
+{
+	"isStar": true,
+	"isPlanet": false,
+	"luma": 0.004,
+	"age": 5000,
+	"trueLuma": 0.004,
+	"WD": false,
+	"isPrimary": true,
+	"planets": [
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.1,
+			"AUSun": 0.5,
+			"metal": 0.5,
+			"rock": 0.5,
+			"ice": 0,
+			"gas": 0,
+			"moons": []
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.4,
+			"AUSun": 4,
+			"metal": 0.6,
+			"rock": 0.2,
+			"ice": 0.2,
+			"gas": 0,
+			"moons": [
+		        	{
+                                        "isPlanet": true,
+		        	        "isStar": false,
+		         	        "star": {
+			                 	"$ref": "$"
+		                 	},
+			                "parentbody": {
+			                 	"$ref": "$[\"planets\"][1]"
+			                },
+			                "mass": 0.004,
+		         	        "AUSun": 4,
+			                "metal": 0.6,
+		        	        "rock": 0.2,
+				        "ice": 0.2,
+				        "gas": 0,
+				        "distanceFromParent": 0.0003,
+             	                        "moons": []
+                                }
+			]
+		}
+	]
+}
