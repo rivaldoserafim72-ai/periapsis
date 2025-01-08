@@ -4,6 +4,7 @@
 	"luma": 0.004,
 	"age": 5000,
 	"isPrimary": true,
+	"name": "Salibe",
 	"planets": [
 		{
 			"isPlanet": true,
