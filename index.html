@@ -175,6 +175,12 @@
             color: var(--textcolorb);
             
         }
+        li {
+            font-family: var(--font);
+            font-weight:bold;
+            color: var(--textcolorb);
+            
+        }
         #pagenumber {
             font-family: var(--font);
             font-weight:bold;
@@ -682,7 +688,7 @@ input:checked + .slider:before {
         <body>
             <div class="navbar">
             <img class="titleimg" src="img/titleimg.png">
-            <h1> v0.4022 Eridanus </h1>
+            <h1> v0.4031 Sextans</h1>
             <hr>
             <h3 class="patchnotes">System Generation</h3>
         
@@ -695,13 +701,37 @@ input:checked + .slider:before {
             <button onClick="Test();" class="genbutton2">Generate!</button>
             <p class="patchnotes">Seed (leave blank to use random seed)</p>
             <input type="text" class="genbutton3" style="text-align:center;" placeholder="Seed (blank to use random seed)" id="seedinput">
-            <p class="patchnotes">Force habitable planet</p>
-            <label class="switch patchnotes">
-                <input type="checkbox" id="forceTerrestrialPlanet">
-                <span class="slider round patchnotes"></span>
-            </label>
-            <p class="patchnotes">Chance of life on habitable planets (0 = never, 1 = always)</p>
-            <input type="text" class="genbutton3" style="text-align:center;" placeholder="Number of systems to generate" value="0.8" id="lifeChance">
+                <br>
+            <button onClick="toggleAdvancedSettings();" class="genbutton" >Open generation settings</button>
+                <div style="display:none;" id="advancedSettings">
+                    <p class="patchnotes">Force habitable planet</p>
+                    <label class="switch patchnotes">
+                    <input type="checkbox" id="forceTerrestrialPlanet">
+                    <span class="slider round patchnotes"></span>
+                    </label>
+                    <p class="patchnotes">Chance of life on habitable planets (0 = never, 1 = always)</p>
+                    <input type="text" class="genbutton3" style="text-align:center;" placeholder="Chance of life" value="0.8" id="lifeChance">
+                    <p class="patchnotes">Jupiter behavior (does not apply to small stars)</p>
+                    <button onClick="toggleSystemType();" class="genbutton" id="systypeDisplay">Random</button>
+                    <p class="patchnotes">This setting determines how the main gas giant of the system, nicknamed the 'Jupiter', is generated. In our solar system, this planet is (what else?) Jupiter.</p>
+                    <ul>
+                        <li><p>Random: Let the generator decide randomly how the Jupiter behaves.</p></li>
+                        <li><p>No Jupiter: Disable the formation of the Jupiter entirely.</p></li>
+                        <li><p>No Hot Jupiter: The Jupiter forms but does not migrate.</p></li>
+                        <li><p>Hot Jupiter: The Jupiter forms and migrates inward to the inner solar system, destroying or ejecting any planets in its way.</p></li>
+                        <li><p>Sol-like: The Jupiter undergoes a "Grand Tack", creating a system structure like our Solar System.</p></li>
+                    </ul>
+                    <p class="patchnotes">Minimum star mass (default = 0.08)</p>
+                    <input type="text" class="genbutton3" style="text-align:center;" placeholder="Mass" value="0.08" id="starMin">
+                    <p class="patchnotes">Maximum star mass (default = 8)</p>
+                    <input type="text" class="genbutton3" style="text-align:center;" placeholder="Mass" value="8" id="starMax">
+                    <p class="patchnotes">0.08 is a small red dwarf. 1 is a Sun-like star, and 8 is a massive blue star.</p>
+                
+                
+                
+                
+                
+                </div>
             <a href="https://github.com/Vector-Graphics/periapsis/wiki/How-To-Customize-a-Periapsis-System" class="patchnotes" target="_blank" rel="noopener noreferrer"><p>Learn how to make your own systems! (Link)</p></a>
             <!--<p></p>
 
@@ -719,6 +749,14 @@ input:checked + .slider:before {
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
          
                 <h1 class="patchnotes"> PATCHNOTES</h1>
+                <h3 class="patchnotes">0.4031 beta | Sextans</h3>
+                <p class="patchnotes">- removed white dwarfs for now, as they were too buggy</p>
+                <p class="patchnotes">- they will be readded when giant stars are (which will probably be a large-scale rework of the way stars work, with independent temperature and luma values)</p>
+                <p class="patchnotes">- added star mass to generator options</p>
+                <p class="patchnotes">- added generator configuration options to select the way the largest planet behaves</p>
+                <p class="patchnotes">- grand tack systems (Sol-like) will now attempt to generate a number of inner planets, as well as an asteroid belt</p>
+                <p class="patchnotes">- system.solar download files now have a timestamp attached so that they don't get ugly numbers appended by the OS</p>
+                <p class="patchnotes">- decided to release this as 4031. it's not Horologium but it's still a big update. Horologium is now 4041</p>
                 <h3 class="patchnotes">0.4022 beta</h3>
                 <p class="patchnotes">- added link to the new custom system guide</p>
                 <p class="patchnotes">- renamed "Force terrestrial planet" to "Force habitable planet" to make it clearer what it does</p>
@@ -738,17 +776,22 @@ input:checked + .slider:before {
                 <p class="patchnotes">- binary and even triple stars!</p>
                 <p class="patchnotes">- full JSON editing, customization, download and upload support (ripped from the original walkersysgen)</p>
                 <p class="patchnotes">- no longer in pre-alpha</p>
-            <h3 class="patchnotes">v0.4001 alpha | Orion:</h3>
+            <h3 class="patchnotes">v0.4001 pre-alpha | Orion:</h3>
             <p class="patchnotes">- pre-alpha generator released</p>
             <p class="patchnotes">- doesn't even have a system diagram yet smh</p>
             <p class="patchnotes">- and all the planets are named Salibe, what kinda generator is this</p>
             <hr>
             <h1 class="patchnotes"> COMING SOON</h1>  
-            <h3 class="patchnotes">0.4031 | Horologium - planned features: </h3>
+            <h3 class="patchnotes">0.4041 | Horologium - planned features: </h3>
             <p class="patchnotes">- planetary rings</p>
             <p class="patchnotes">- rotation periods and tidal locking</p>
             <p class="patchnotes">- binary planets and unterplanets</p>   
             <p class="patchnotes">- hopefully full release of 0.5 at this point, depends on what I remember to add</p>   
+            <h3 class="patchnotes">Number TBD | Sagittarius - planned features:
+            </h3>
+            <p class="patchnotes">- red giants</p>
+            <p class="patchnotes">- white dwarfs</p>
+            <p class="patchnotes">- neutron stars and black holes</p>
             </div>
             <p></p>
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
@@ -777,12 +820,16 @@ input:checked + .slider:before {
                 <div class="patchnotes"></p>
                 <button onClick="toggleJSONEditor();" class="genbutton">Open JSON editor</button>
                 <div style="display:none;" id="jsoneditor">
+                    <p> Warning: Hitting "Generate" OVERWRITES this text field! </p>
                     <textarea type="text" class="genbutton3" placeholder="{
         'isStar': true,
         'isPlanet': false, ..." id="jsoninput"></textarea>
                     <div>
                         <button onClick="updateSystem();" class="genbutton" style="width:350px; display:inline">Update system</button>
-                        <button onClick="saveTextAsFile(t.value,'system.solar');" class="genbutton" style="width:350px; display:inline">Download SOLAR file</button>
+                        <button onClick="
+                        saveTextAsFile(document.getElementById('jsoninput').value,Math.floor(Date.now()/1000)+'-system.solar');
+                        
+                        " class="genbutton" style="width:350px; display:inline">Download SOLAR file</button>
                         <input type="button" id="loadFile" class="genbutton" style="width:350px; display:inline; text-align:center; text-wrap:wrap;" value="Choose SOLAR file" onclick="document.getElementById('file').click();" />
                         <button onClick="loadSystem();" class="genbutton" style="width:350px; display:inline; text-align:center; text-wrap:wrap;">Load selected SOLAR file</button>
                         <input type="file" style="display:none;" id="file" name="file"/>
@@ -840,6 +887,7 @@ function toTitleCase(str) {
 }
 
 function generatePlanetName() {
+    
     var tmp3;
     if(prng()>=0.5){
         if(prng()>=0.5){
@@ -925,6 +973,13 @@ var imgsrcs =[
     "img/planeticons/waterOverlay1.png",
     "img/planeticons/waterOverlay2.png",
     "img/planeticons/waterOverlay3.png",
+]
+var systypeNames = [
+    "Random",
+    "No Jupiter",
+    "No Hot Jupiter",
+    "Hot Jupiter",
+    "Sol-like"
 ]
 var imageobjs = {
 
@@ -1119,7 +1174,6 @@ function baseTemperature(planet_in){
     }
    
 }
-
 var seed = Math.floor(Math.random()*441041798642919);
 function prng() {
     seed = ((seed*seed*seed*seed*seed*seed)+249254546412641)%491041798642919;
@@ -1158,26 +1212,41 @@ function checkForTerrestrialPlanet(system){
     }
     return false;
 }
+var systypeInput = 0;
+var systypeButton = document.getElementById("systypeDisplay")
+function toggleSystemType() {
+    systypeInput++;
+    if(systypeInput > 4){
+        systypeInput = 0;
+    };
+    systypeButton.textContent = systypeNames[systypeInput];
+}
 var jk = 0;
+var publicStar;
 function Test(){
-    
+    var canGenerateSystem = true;
+    if(document.getElementById("jsoneditor").style.display != "none"){
+        canGenerateSystem = window.confirm("Generating a new system overwrites the existing system, which you may have made changes to. Are you sure?")
+    }
+    if(canGenerateSystem){
     var oolala=document.getElementById("seedinput");
     if((oolala.value >= 0 || oolala.value <= 0)&&oolala.value != ""){ // oolala.value is a number
     seed=oolala.value;
     } // else use random seed
     var kseed = seed;
-    
+    var starMin = Math.min(Math.max(document.getElementById("starMin").value,0.085),7.5);
+var starMax = Math.min(Math.max(document.getElementById("starMax").value,0.085),7.5);
     var ij = 0;
     var div = document.createElement("div");
     div.classList.add("system");
     if(document.getElementById("forceTerrestrialPlanet").checked){
         var kseed = seed;
-        var test_star = generateStar(0.08,8,true);
+        var test_star = generateStar(starMin,Math.max(starMax,starMin*1.05),true);
         var planets = sortByDistance(test_star.planets);
         while(checkForTerrestrialPlanet(test_star)==false && ij <= 50){
             ij++;
             var kseed = seed;
-            var test_star = generateStar(0.08,8,true);
+            var test_star = generateStar(starMin,Math.max(starMax,starMin*1.05),true);
             var planets = sortByDistance(test_star.planets);
         }
         if(checkForTerrestrialPlanet(test_star)==false){
@@ -1189,7 +1258,7 @@ function Test(){
     return;
         }
     }else{
-    var test_star = generateStar(0.08,8,true);
+    var test_star = generateStar(starMin,Math.max(starMax,starMin*1.05),true);
     var planets = sortByDistance(test_star.planets);
     }
     console.log("System generated with seed "+kseed+", skipped "+ij+" systems")
@@ -1200,6 +1269,8 @@ function Test(){
     systemDataToHTML(test_star,div);
     div2.appendChild(div);
     document.getElementById("jsoninput").value = (JSON.stringify(JSON.decycle(test_star, undefined),null, "\t"));
+    publicStar = test_star;
+    }
 }
 
 function FFS(a,b){
@@ -1417,11 +1488,12 @@ function MassFromStarTemperature(x){
 }
 
 function generateStar(massLower=0.08,massUpper=8,isPrimary=true,canGeneratePlanets=true,parentbody){ // generate a star
-    console.log(massToLuma(8));
     var jLi = SomehowFindTheInverseOfThisDegree60Polynomial(massLower);
     var kLi = SomehowFindTheInverseOfThisDegree60Polynomial(massUpper);
     var Li = prng()*(kLi-jLi)+jLi; // mass input, assuming main sequence for now (giant stars will not be simulated)
     var Li2 = (0.37/0.4)*Li+0.08+(Li**10)*2.5+(Li**60)*4.5; // mass
+    var starMin = Math.min(Math.max(document.getElementById("starMin").value,0.085),7.5);
+    var starMax = Math.min(Math.max(document.getElementById("starMax").value,0.085),7.5)
     var starOutput = new Star(
     [], // no planets for now
     massToLuma( // get luma from mass
@@ -1440,13 +1512,13 @@ function generateStar(massLower=0.08,massUpper=8,isPrimary=true,canGeneratePlane
     // check if star should be a remnant
     var Li3 = 12000 /* lifespan of Sun */ * Li2**-2.5
     if (starOutput.age > Li3){
-
-        starOutput.trueLuma = 0; // white dwarves have effectively no luminosity
-        starOutput.WD = true; // the star is a white dwarf
+        starOutput.age = Math.max(200,prng()*(Li3-200)+200)
+        // starOutput.trueLuma = 0; // white dwarves have effectively no luminosity
+        // starOutput.WD = true; // the star is a white dwarf
     }
     if(isPrimary==true){
         if(prng()>=0.75){
-        var ghi = generateStar(0.08,lumaToMass(starOutput.luma),false,false,starOutput)
+        var ghi = generateStar(0.95*starMin,lumaToMass(starOutput.luma),false,false,starOutput)
         starOutput.planets.push(
             ghi
         )
@@ -1454,7 +1526,7 @@ function generateStar(massLower=0.08,massUpper=8,isPrimary=true,canGeneratePlane
 
     }
     if(prng()>=0.75){
-        var ghi = generateStar(0.08,lumaToMass(starOutput.luma),false,true,starOutput)
+        var ghi = generateStar(0.95*starMin,lumaToMass(starOutput.luma),false,true,starOutput)
         starOutput.planets.push(
             ghi
         )
@@ -1569,15 +1641,17 @@ function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,di
     return planetOutput;
 }
 
-
+function distance(planet){
+    return planet.distanceFromParent;
+}
 function FirstPlanet(star){
     
     if(lumaToMass(star.luma) <= 0.5){ // case 1: star is not large enough (<0.2 mass) to form a large planet; skip this step {depends on star}
 
     }else{ // case 2: star is large enough to form a large planet (>150 Earth masses), but no such planet forms {33%}
         
-        if(prng()<=(Math.min(lumaToMass(star.luma),1)-0.33)){  // case 3: star is large enough to form a large planet (>150 Earth masses), planet forms: {67%}
-            if(prng()>=0.50){ // case 3c: no migration: {50%}
+        if((prng()<=(Math.min(lumaToMass(star.luma),1)-0.33) && systypeInput == 0) || systypeInput >= 2){  // case 3: star is large enough to form a large planet (>150 Earth masses), planet forms: {67%}
+            if((prng()>=0.50 && systypeInput == 0) || systypeInput == 2){ // case 3c: no migration: {50%}
                 star.innerSystem = 0; // - inner system flag is set to 0, indicating no migration, and no orbital zones are marked invalid
                 var kp = generatePlanet(
                         150,
@@ -1596,11 +1670,15 @@ function FirstPlanet(star){
 
                     
                     
-            } else if(prng()>=0.50){   // case 3b: "hot jupiter": {25%}
-                if(prng()<=star.age/8000){ // hot jupiter is destroyed, 
+            } else if((prng()>=0.50 && systypeInput == 0) || systypeInput == 3){   // case 3b: "hot jupiter": {25%}
+        
+                if(/*prng()<=star.age/8000*/false){ // hot jupiter is destroyed, 
                     star.innerSystem = 3;   // inner system flags 1 and 3 have the same behavior, but 3 indicates that the planet with index 0 is not the main planet (as no main planet exists)
+                   
+
                 } else {         // hot jupiter is generated    
                     star.innerSystem = 1; // - inner system flag is set to 1, indicating a hot jupiter, and meaning zones inwards of 5 AUSun are marked invalid for medium/large planets (>2 Earth masses), zones inwards of 3 AUSun are marked invalid for small planets, and zones inwards of 2 AUSun are marked invalid for unterplanets
+                    
                     var kp = generatePlanet(
                         150,
                         1000,
@@ -1655,6 +1733,9 @@ function FirstPlanet(star){
     }
     function determinePlanetPlacement(star,size,inner=0.3,outer=50){ // size 0 is gas giant, size 1 is medium/large, size 2 is small, size 3 is unterplanet; returns in AUSun
         var orbitdist = 10**(prng()*(Math.log10(outer)-Math.log10(inner))+Math.log10(inner)); // try a random orbit distance
+        if(size==2){
+                
+                    }
         var planets = star.planets; // for convenience
         var orbitValid = 0; // by default
             var jk = orbitdist; // just to make sure
@@ -1665,37 +1746,84 @@ function FirstPlanet(star){
                     var mass = lumaToMass(planets[j].luma)*333000
                 }
                 var closeness = Math.abs(orbitdist*sqrt(sqrt(star.luma)) - planets[j].AUSun*sqrt(sqrt(star.luma)));
-                if(closeness < 0.15*sqrt(planets[j].mass)){ // is it a small planet quite close to a gas giant?
+                if(orbitdist <= 3 && star.innerSystem != 1 ){
+                    if(j==star.mainPlanet){
+                    if(closeness < 0.08*sqrt(min(planets[j].mass,350)) || Math.abs(orbitdist - planets[j].AUSun) < 0.15){ // is it a small planet quite close to a gas giant?
+                        
+                        return;
+                    }
+                    }else{
+                        if(closeness < 0.09*sqrt(min(planets[j].mass,350)) || Math.abs(orbitdist - planets[j].AUSun) < 0.15){ // is it a small planet quite close to a gas giant?
+                            if(size==2){
+                       
+                    }
                     return;
+                    
+                    }
+                    }
+
+                }else{
+                    if(closeness < 0.15*sqrt(min(planets[j].mass,350))){ // is it a small planet quite close to a gas giant?
+                        if(size==2){
+                   
+                       
+                    }
+                    return;
+                    
+                    }
                 }
-                if((closeness < 0.3*sqrt(planets[j].mass)|| orbitdist <= 3) && size == 0){ // is it a large planet moderately close to a gas giant?
+
+                if((closeness < 0.3*sqrt(min(planets[j].mass,350))|| orbitdist <= 3) && size == 0){ // is it a large planet moderately close to a gas giant?
+                    if(size==2){
+                       
+                    }
                     return;
+                    
                 }
                 if(
                     (star.innerSystem==1 && orbitdist <= 5 && size <= 1)|| // would it have been wiped by a hot jupiter migration?
                     (star.innerSystem==1 && orbitdist <= 3 && size == 2)||
                     (star.innerSystem==1 && orbitdist <= 2 && size == 3)
                 ){
+                    if(size==2){
+                    
+                    }
                     return;
                 }
                 if(
-                    (star.innerSystem==2 && orbitdist <= 6 && size  <= 1)|| // would it have been wiped by a grand tack migration?
-                    (star.innerSystem==2 && orbitdist <= 6 && orbitdist >= 2 && size == 2)
+                    /*(star.innerSystem==2 && orbitdist <= 6 && size  <= 1)*/false|| // would it have been wiped by a grand tack migration?
+                    (star.innerSystem==2 && orbitdist <= 6 && orbitdist >= 2 && size >= 1 && size <= 2)
                 ){
+                    if(size==2){
+                     
+                    }
+                    return;
+                }
+                if(star.innerSystem==2 && orbitdist <= 6 && size == 1){
+                    if(size==2){
+                      
+                    }
                     return;
                 }
                 if(
                     (orbitdist <= inner)|| // kjust to make sure
                     (orbitdist >= outer)
                 ){
+                    if(size==2){
+                   
+                    }
                     return;
                 } 
             }
             if(jk==orbitdist){
                 orbitValid = 1;
+                
                 return orbitdist; 
+                
             }
-        
+            if(size==2){
+                   
+                    }
         return;
         
     }
@@ -1783,8 +1911,12 @@ function FirstPlanet(star){
                     };
         }
     }
-    function mediumPlanet(star){
+    function mediumPlanet(star,inner){
         AUSun = determinePlanetPlacement(star,1,0.3,Math.min(50*sqrt(lumaToMass(star.luma)),66));
+        if(inner){
+            AUSun = determinePlanetPlacement(star,1,0.3,Math.min(50*sqrt(lumaToMass(star.luma)),3));
+        }
+        
         if(AUSun != undefined){
             var kp=(generatePlanet(2,12,AUSun,star,star,null,star.planets.length,0));
             if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
@@ -1792,14 +1924,20 @@ function FirstPlanet(star){
                     };
         }
     }
-    function smallPlanet(star, AUSun = undefined){
+    function smallPlanet(star,inner,AUSun = undefined){
         if(AUSun == undefined){
+            
+            if(inner){
+            AUSun = determinePlanetPlacement(star,2,0.3,Math.min(50*sqrt(lumaToMass(star.luma)),3));
+        } else {
             AUSun = determinePlanetPlacement(star,2,0.3,Math.min(50*sqrt(lumaToMass(star.luma)),66));
         }
+        }
+
         
         if(AUSun != undefined){
             var kp=(generatePlanet(0.04,3,AUSun,star,star,null,star.planets.length,0));
-            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+            if(!(hillSphere(kp.star)<distance(kp))){
                         star.planets.push(kp);
                     };
         }
@@ -1855,9 +1993,22 @@ function FirstPlanet(star){
         for (var i = 0; i < (2)-(prng()*1); i++){
             mediumPlanet(star);
         }
+        if(star.innerSystem == 0){
+            for (var i = 0; i < (3)-(prng()*1); i++){
+            mediumPlanet(star);
+        }
+        }
         for (var i = 0; i < (6)-(prng()*5); i++){
             smallPlanet(star);
         }
+        var s53 = star.planets.length;
+        for (var i = 0; i < (9)-(prng()*5); i++){
+            smallPlanet(star,true);
+        }
+        if(star.innerSystem == 2 || star.innerSystem == 1 ){
+            for (var i = 0; i < (4)-(prng()*3); i++){
+                unterplanet(star,2.8);
+        }}
         for (var i = 0; i < (12)-(prng()*11); i++){
                if(c1>0){
                 unterplanet(star,c1);
@@ -1884,9 +2035,15 @@ function FirstPlanet(star){
 
     function dice(n, s) {
     var tot=0; 
+    
     for(var i=0; i < n; i++) {
-        tot += Math.floor(prng() * s);
+        var kto =  Math.floor(prng() * s);
+        if(kto > s-1){
+            kto = s-1;
+        }
+        tot += kto;
     } 
+    
     return tot;
 }
     function YearToOrbit(year){
@@ -2177,6 +2334,16 @@ function FirstPlanet(star){
             field.style.display = "block";
         } else {
             field.style.display = "none";
+        }
+
+    }
+    var field2 = document.getElementById("advancedSettings");
+    function toggleAdvancedSettings(){
+        
+        if(field2.style.display == "none"){
+            field2.style.display = "block";
+        } else {
+            field2.style.display = "none";
         }
 
     }
