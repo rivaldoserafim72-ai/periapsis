@@ -9,13 +9,16 @@
     <style>
   :root {
     --textcolor: rgb(255,255,255);
-            --textcolorb: rgb(255,255,255);        
+            --textcolorb: rgb(190, 234, 255);        
             --bgcolor: rgb(0, 0, 19);
-            --btncolorpressed: rgb(0, 16, 160);
-            --btncolor: rgb(0, 64, 202);
-            --btncolorhover: rgb(0, 86, 214);
+            --btncolorpressed: rgb(0, 5, 48);
+            --btncolor: rgb(10, 0, 100);
+            --btncolorhover: rgb(40, 2, 255);
             --scrollcolor: rgb(0, 38, 141);
-            --insetcolor:rgb(0, 8, 41);
+            --insetcolor:rgb(0, 12, 58);
+            --insetcolor2:rgb(0, 8, 41);
+            --insetcolor3:rgb(0, 5, 26);
+            --insetcolor4:rgb(0, 0, 0);
             --typeg:rgb(255,255,255);
             --typef:#c0e8ff;
             --typek:#fff0c1;
@@ -23,12 +26,12 @@
             --cyan: #51e9f4;
             --lightgreen: #7fed56;
             --typea: #89d4ff;
-            --innershadowcolor: #0084ff1f;
-            --innershadowcolorb: #00ccff1f;
-            --borderradiusdf: 8px;
+            --innershadowcolor: #0044ff;
+            --innershadowcolorb: #0084ff;
+            --borderradiusdf: 50px;
             --whiteiconfilter: none;
-            --font: Comfortaa, sans-serif;
-            --hfont: Comfortaa, sans-serif;
+            --font: Metrophobic, sans-serif;
+            --hfont: Metrophobic, sans-serif;
             /**--textcolor: rgb(255,255,255);
             --textcolorb: rgb(255,255,255);    
             --bgcolor: rgb(16,16,16);
@@ -170,7 +173,6 @@
         }
         p {
             font-family: var(--font);
-            font-weight:bold;
             font-size: larger;
             color: var(--textcolorb);
             
@@ -270,7 +272,7 @@
             transition: 0.15s;
             height: auto;
             
-            box-shadow: inset -8px -8px 16px  var(--innershadowcolorb);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolorb);
             text-wrap:nowrap
         }
         .genbutton3 {
@@ -286,11 +288,12 @@
             font-size: 1.25em;
             color: var(--textcolor);
             border: 0px;
+            border-color:white;
             border-radius: var(--borderradiusdf);
             cursor: text;
             transition: 0.15s;
             height: auto;
-            box-shadow: inset -8px -8px 16px  var(--innershadowcolorb);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolorb);
         }
         .genbutton:hover {
             background: var(--btncolorhover);
@@ -318,7 +321,7 @@
             cursor: pointer;
             transition: 0.15s;
             height: 80px;
-            box-shadow: inset -8px -8px 16px  var(--innershadowcolorb);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolorb);
         }
         input::file-selector-button:hover {
             background: var(--btncolorhover);
@@ -346,7 +349,8 @@
             border-radius: var(--borderradiusdf);
             cursor: pointer;
             transition: 0.15s;
-            box-shadow: inset -8px -8px 16px  var(--innershadowcolorb);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolorb);
+            border-color:white;
         }
         .genbutton2:hover {
             background: var(--btncolorhover);
@@ -371,7 +375,7 @@
             cursor: pointer;
             transition: 0.15s;
             height: 40px;
-            box-shadow: inset -8px -8px 16px  var(--innershadowcolorb);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolorb);
         }
         .titleimg{
             margin: 0 auto;
@@ -389,7 +393,7 @@
             width: 80%;
             margin: auto;
             border-radius: var(--borderradiusdf);
-            box-shadow: inset 8px 8px 16px  var(--innershadowcolor);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
         }
         .system{
@@ -401,7 +405,7 @@
             background: var(--insetcolor);
             padding: 15px;
             border-radius: var(--borderradiusdf);
-            box-shadow: inset 8px 8px 16px  var(--innershadowcolor);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
         }
         .system2{
@@ -410,10 +414,34 @@
             
             overflow-x:hidden;
             
-            background: var(--insetcolor);
+            background: var(--insetcolor2);
             padding: 15px;
             border-radius: var(--borderradiusdf);
-            box-shadow: inset 8px 8px 16px  var(--innershadowcolor);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
+            transition: 0.15s;
+        }
+        .system2 .system2{
+            scrollbar-width:thin;
+            scrollbar-color:var(--bgcolor),var(--scrollcolor);
+            
+            overflow-x:hidden;
+            
+            background: var(--insetcolor3);
+            padding: 15px;
+            border-radius: var(--borderradiusdf);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
+            transition: 0.15s;
+        }
+        .system2 .system2 .system2{
+            scrollbar-width:thin;
+            scrollbar-color:var(--bgcolor),var(--scrollcolor);
+            
+            overflow-x:hidden;
+            
+            background: var(--insetcolor4);
+            padding: 15px;
+            border-radius: var(--borderradiusdf);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
         }
         #csvout p {
@@ -577,10 +605,13 @@
     .systemdisplay {
         width: 100%;
         border-radius: 16px;
-        background-image: url("img/bgstars.png");
+        background:black;
         background-size: 2048px;
         position:relative;
-        display:block;
+        display:block;            
+            border-radius: var(--borderradiusdf);
+            box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
+            transition: 0.15s;
     }
     .planetdisplay {
         width: 256px;
@@ -687,8 +718,8 @@ input:checked + .slider:before {
     <main>
         <body>
             <div class="navbar">
-            <img class="titleimg" src="img/titleimg.png">
-            <h1> v0.4031 Sextans</h1>
+            <img class="titleimg" src="img/titleimg3.png">
+            <h1> v0.5001 Horologium</h1>
             <hr>
             <h3 class="patchnotes">System Generation</h3>
         
@@ -726,6 +757,8 @@ input:checked + .slider:before {
                     <p class="patchnotes">Maximum star mass (default = 8)</p>
                     <input type="text" class="genbutton3" style="text-align:center;" placeholder="Mass" value="8" id="starMax">
                     <p class="patchnotes">0.08 is a small red dwarf. 1 is a Sun-like star, and 8 is a massive blue star.</p>
+                    <p class="patchnotes">Planet density</p>
+                    <input type="text" class="genbutton3" style="text-align:center;" placeholder="1" value="1" id="planettries">
                 
                 
                 
@@ -749,6 +782,16 @@ input:checked + .slider:before {
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
          
                 <h1 class="patchnotes"> PATCHNOTES</h1>
+                <h3 class="patchnotes">release 0.5001 | Horologium</h3>
+                <p class="patchnotes">- app is now in a state where it should be functional for most use</p>
+                <p class="patchnotes"><b><u>- the long-awaited Horologium update is here! Features:</u></b></p>
+                <p class="patchnotes">- <b>binary planets:</b> planets can now have similarly sized companions</p>
+                <p class="patchnotes">- <b>rotation periods:</b> planets now specify their rotation period. planets imported from an earlier version have warnings that rotation data is not specified, but you can just add those to the json</p>
+                <p class="patchnotes">- <b>tidal locking:</b> planets now tidally lock to parent planets, close stars, or binary companions</p>
+                <p class="patchnotes">- <b>planetary rings:</b> planets now have a chance of having rings, based on their size (unterplanets and gas giants are most likely)</p>
+                <p class="patchnotes">- <b>more customization:</b> the generator now randomly chooses how many planets it will try to generate in the system, and this value can be customized. while the generator still tries to generate stars with actual planets, this does make for more realistic distributions of planetary structures.</p>
+                <p class="patchnotes">- the app now filters out naughty words from planet names, replacing them with "Salibe"</p>
+                <p class="patchnotes">- celebrated the release with a new visual style for the app</p>
                 <h3 class="patchnotes">0.4031 beta | Sextans</h3>
                 <p class="patchnotes">- removed white dwarfs for now, as they were too buggy</p>
                 <p class="patchnotes">- they will be readded when giant stars are (which will probably be a large-scale rework of the way stars work, with independent temperature and luma values)</p>
@@ -885,7 +928,36 @@ function toTitleCase(str) {
     text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
 }
-
+var bannedWords = [
+    "rape",
+    "nig",
+    "neg",
+    "fuk",
+    "fuc",
+    "fak",
+    "phac",
+    "fac",
+    "phuc",
+    "phak",
+    "phuk",
+    "kike",
+    "pepe",
+    "mercury",
+    "venus",
+    "earth",
+    "mars",
+    "jupiter",
+    "saturn",
+    "uranus",
+    "neptune",
+    "tit",
+    "pini",
+    "peni",
+    "pipi",
+    "fag",
+    "phag",
+    "pedo"
+]
 function generatePlanetName() {
     
     var tmp3;
@@ -902,6 +974,11 @@ function generatePlanetName() {
     }
     } else {
         tmp3 = (syllable()+syllable()+nameends[dice(1,nameends.length)]);
+    }
+    for(let bannedIndex in bannedWords){
+        if(tmp3.includes(bannedWords[bannedIndex])){
+            tmp3 = "salibe";
+        }
     }
     return tmp3;
 }
@@ -981,6 +1058,11 @@ var systypeNames = [
     "Hot Jupiter",
     "Sol-like"
 ]
+var tidalLockingNames = [
+    "No tidal locking",
+    "Tidally locked to parent",
+    "Tidally locked to binary"
+]
 var imageobjs = {
 
 }
@@ -1026,6 +1108,7 @@ class Planet{
         this.life=0;
         this.lifeLocation="subglacial";
         this.civ=false;
+        this.rings=false;
         
         this.liquidCoverage = 0;
         this.density = function(){
@@ -1042,6 +1125,8 @@ class Planet{
             return 255/sqrt(AUSun)
         }
         this.moons=moons;
+        this.tidalLock=0;
+        this.dayCycle=1;
     }
 }
 class Star{
@@ -1068,6 +1153,7 @@ class Star{
 }
 var t = document.getElementById("jsoninput");
 async function loadSystem(){
+    console.log("Began loading system!")
     const selectedFile = document.getElementById("file").files[0];
     const systext = await selectedFile.text();
     document.getElementById("jsoninput").value = systext;
@@ -1298,15 +1384,26 @@ function planetTemp(planet){
 }
 function lowTemp(planet){
     if(planet.greenhouseEffect != undefined){
-        return planetTemp(planet)* (1-(0.276 * (1/((6*planet.greenhouseEffect - 5)**2))));
-
+        if(planet.tidalLock == 1 && planet.parentbody.isPlanet == false){
+            return max(planetTemp(planet)* (1-(0.7 * (1/((6*planet.greenhouseEffect - 5)**2)))),5);
+        }else{
+            return planetTemp(planet)* (1-(0.276 * (1/((6*planet.greenhouseEffect - 5)**2))));
+        }
     } else {
         return planetTemp(planet)* (1-(0.276 * (1/((6 - 5)**2))));
     }    
 }
 function highTemp(planet){
     if(planet.greenhouseEffect != undefined){
-        return planetTemp(planet)/ (1-(0.155 * (1/((6*planet.greenhouseEffect - 5)**2))));
+        if(planet.tidalLock == 1 && planet.parentbody.isPlanet == false){
+            console.log("yes");
+            console.log("Tidal+"+max(planetTemp(planet)/ (1-(0.320 * (1/((6*planet.greenhouseEffect - 5)**2)))),5));
+            console.log("Diurnal+"+planetTemp(planet)/ (1-(0.155 * (1/((6*planet.greenhouseEffect - 5)**2)))));
+            return max(planetTemp(planet)/ (1-(0.310 * (1/((6*planet.greenhouseEffect - 5)**2)))),5);
+        } else {
+            return planetTemp(planet)/ (1-(0.155 * (1/((6*planet.greenhouseEffect - 5)**2))));
+        }
+        
 
     } else {
         return planetTemp(planet)/ (1-(0.155 * (1/((6- 5)**2))));
@@ -1361,7 +1458,7 @@ function atmosphere(planet){
    
             if(highTemp(planet)>=boilingPoint(planet.atmothickness,water) && baseTemperature(planet)<=boilingPoint(planet.atmothickness,water) && planet.AUSun<1){
                 planet.atmobasegas = "carbondioxide"; // runaway greenhouse
-                
+                console.log("RUN AWAY!!!!!!")
                 planet.atmothickness = prng()*50+75;
                 planet.greenhouseEffect = prng()*2+2;
             }
@@ -1550,7 +1647,7 @@ function generateStar(massLower=0.08,massUpper=8,isPrimary=true,canGeneratePlane
 function min(x,y){
     return Math.min(x,y);
 }
-function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,distanceFromParent,index,type,isMoon=false){ // generate a planet given the specified properties; distance is in AU:sun: for convenience
+function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,vDistanceFromParent,index,type,isMoon=false){ // generate a planet given the specified properties; distance is in AU:sun: for convenience
     // type 0 = rocky planet (can have surface ice if beyond 2.5 AU:sun:)
     // type 1 = gas giant
     // type 2 = ice giant
@@ -1558,7 +1655,7 @@ function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,di
         star, // the star that the planet most directly orbits around (NOT the main star of the system)
         parentbody, // the object that the planet orbits, i.e. gas giant, star, etc
         null, // figure out distance later
-        distanceFromParent,
+        vDistanceFromParent,
         index, // this will be the order in which planets are generated: large planets first, followed by medium planets, then small planets, and finally unterplanets
         1, // mass is generated later on
         [], // no moons by default
@@ -1589,6 +1686,7 @@ function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,di
     planetOutput.ice = 0;
     planetOutput.gas = 0;
     planetOutput.rock = 0;
+
     if(type==2){ // ice giant?
             planetOutput.ice = (prng()/3)+0.5; // planet is mostly ice...
             planetOutput.gas = 1-planetOutput.ice; // and some gas
@@ -1608,36 +1706,92 @@ function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,di
                 planetOutput.rock *= 1-iceProportion;
                 planetOutput.ice = iceProportion; // add ice crust/mantle
             }
-            atmosphere(planetOutput);
+            
     }
-    
-    
 
-    if(isMoon==false){
+    planetOutput.dayCycle = (prng()*10)+0.3;
+
+
+if(mass(planetOutput.star) < 0.2 || planetOutput.isMoon){
+    console.log(planetOutput.star);
+    if(planetOutput.star.planets[0] != undefined){
+        if(!planetOutput.star.planets[0].isStar){
+            planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,planetOutput.parentbody.mass/333000)*365;
+    if(planetOutput.parentbody.isStar){
+        planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,mass(planetOutput.parentbody))*365;
+    } 
+    planetOutput.tidalLock = 1;
+    }
+    } else{
+        planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,planetOutput.parentbody.mass/333000)*365;
+    if(planetOutput.parentbody.isStar){
+        planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,mass(planetOutput.parentbody))*365;
+    } 
+    planetOutput.tidalLock = 1;
+    }
+
+
+}
+
+if(isMoon==false){
  
-        if(type==0||prng()>0.5){
+ if(type==0||prng()>0.5){ // generate moons of rocky planet
 
-            if(prng()<=planetOutput.mass-0.5){
-                var k2 = prng()*Math.cbrt(planetOutput.mass)
-                for (let o = 0; o < k2; o++){
+     if(planetOutput.mass<=4&&planetOutput.mass>=0.0005&&prng()>0.9&&mass(planetOutput.star)>=0.4){
+         binary(planetOutput);
+     }
 
-                    moon(planetOutput);
-                }
-            }
+     if(prng()<=planetOutput.mass-0.5){
+         var k2 = prng()*Math.cbrt(planetOutput.mass)
+         for (let o = 0; o < k2; o++){
 
-        } else {
-         
-        var m = (kmToAU(prng()+1*(radius(planetOutput)*3)))
-        
-        for (var k = 0; k < dice(1,5)+2; k++) {
-            moon(planetOutput,m)
-            var n = dice(1,3)+1
-            m *= YearToOrbit((n+1)/n)
-        }
-    
-        }
+             moon(planetOutput);
+         }
+     }
+
+ } else {
+  
+ var m = (kmToAU(prng()+1*(radius(planetOutput)*3)));
+ 
+ for (var k = 0; k < dice(1,5)+2; k++) {
+     moon(planetOutput,m)
+     var n = dice(1,3)+1
+     m *= YearToOrbit((n+1)/n)
+ }
+
+ }
+}
+
+
+if(planetOutput.moons[0] != undefined){
+ if(planetOutput.mass/planetOutput.moons[0].mass <= 20){
+     planetOutput.dayCycle = OrbitToYear(distanceFromParent(planetOutput.moons[0]),planetOutput.mass/333000)*365;
+     planetOutput.tidalLock = 2;
+ }
+ 
+}
+
+if(planetOutput.parentbody.isStar){
+    if(prng()>0.95){
+        planetOutput.rings=true;
     }
+    if(prng()>0.3&&planetOutput.mass>=8){
+        planetOutput.rings=true;
+    }
+    if(prng()>0.7&&planetOutput.mass<=0.005){
+        planetOutput.rings=true;
+    }
+}
+
+
+
+
+    if(type==0){
+        atmosphere(planetOutput);
+    }
+
     
+
     return planetOutput;
 }
 
@@ -1973,15 +2127,24 @@ function FirstPlanet(star){
                 planet.moons.push(generatePlanet(0.00005,Math.min(planet.mass/10,sqrt(planet.mass)/50),planet.AUSun,planet,planet.star,AU,planet.moons.length,0,true));
         }
     }
+    function max(v){
+        return Math.max(v);
+    }
+    function binary(planet){
+        var AU = kmToAU(planet.radius()*(4+prng()*10));
+        console.log(planet.radius());
+        planet.moons.push(generatePlanet(max(planet.mass/10,0.00005),planet.mass/2,planet.AUSun,planet,planet.star,AU,planet.moons.length,0,true));
+    }
+    kplan = Math.min(document.getElementById("planettries").value,10)*prng()*1.5;
     function placePlanetsNonResonant(star){
-        
+        kplan = Math.min(document.getElementById("planettries").value,10)*prng()*1.5;
         FirstPlanet(star);
         if(lumaToMass(star.luma)>0.2){
-            for (var i = 0; i < (2)-(1+prng()); i++){
+            for (var i = 0; i < kplan*((2)-(1+prng())); i++){
             gasGiant(star);
             }
             
-        for (var i = 0; i < (4)-(1+prng()*2); i++){
+        for (var i = 0; i < kplan*((4)-(1+prng()*2)); i++){
             iceGiant(star);
         }
         }
@@ -1990,34 +2153,34 @@ function FirstPlanet(star){
             c1=sortByDistance(star.planets)[star.planets.length-1].AUSun * YearToOrbit(3/2);
         }
 
-        for (var i = 0; i < (2)-(prng()*1); i++){
+        for (var i = 0; i < kplan*((2)-(prng()*1)); i++){
             mediumPlanet(star);
         }
         if(star.innerSystem == 0){
-            for (var i = 0; i < (3)-(prng()*1); i++){
+            for (var i = 0; i < kplan*((3)-(prng()*1)); i++){
             mediumPlanet(star);
         }
         }
-        for (var i = 0; i < (6)-(prng()*5); i++){
+        for (var i = 0; i < kplan*((6)-(prng()*5)); i++){
             smallPlanet(star);
         }
         var s53 = star.planets.length;
-        for (var i = 0; i < (9)-(prng()*5); i++){
+        for (var i = 0; i < kplan*((9)-(prng()*5)); i++){
             smallPlanet(star,true);
         }
         if(star.innerSystem == 2 || star.innerSystem == 1 ){
-            for (var i = 0; i < (4)-(prng()*3); i++){
+            for (var i = 0; i < kplan*((4)-(prng()*3)); i++){
                 unterplanet(star,2.8);
         }}
-        for (var i = 0; i < (12)-(prng()*11); i++){
+        for (var i = 0; i < kplan*((12)-(prng()*11)); i++){
                if(c1>0){
                 unterplanet(star,c1);
                }
 }
         if(prng()>0.5/lumaToMass(star.luma)){
-            for(var y = 0; y < (2)-(prng()*1); y++){
+            for(var y = 0; y < kplan*((2)-(prng()*1)); y++){
             c1=determinePlanetPlacement(star,1,2,75)
-            for (var i = 0; i < (12)-(prng()*11); i++){
+            for (var i = 0; i < kplan*((12)-(prng()*11)); i++){
            
             unterplanet(star,c1);
         }
@@ -2083,9 +2246,10 @@ function FirstPlanet(star){
         return au*149600000
     }
     function placePlanetsResonant(star){
+        kplan = Math.min(document.getElementById("planettries").value,10)*prng()*1.5;
         var m = (prng())+0.4
         
-        for (var k = 0; k < dice(1,5)+3; k++) {
+        for (var k = 0; k < (dice(1,5)+3)*kplan; k++) {
             if(m<50){
                 resonantPlanet(star,m)
             }
@@ -2104,7 +2268,7 @@ function FirstPlanet(star){
 
         tempCanvas = document.createElement("canvas");
         tempCanvas.setAttribute("width","3700px");
-        tempCanvas.setAttribute("height","800px");
+        tempCanvas.setAttribute("height","900px");
         var canvascontainer = document.createElement("div");
     canvascontainer.appendChild(tempCanvas);
     canvascontainer.setAttribute("style","position:relative;width:100%;aspect-ratio:37/13;margin-bottom:0px;margin-top:0px;");
@@ -2114,7 +2278,7 @@ function FirstPlanet(star){
     ctx.imageSmoothingQuality="high";
     ctx.fillStyle = "rgb(0,255,0)";
     ctx.fillStyle = "rgb(0,255,0)";
-    drawPlanet(star,-50-(radius(star)**0.33)*1,3300,ctx,250); // DRAW STAR
+    drawPlanet(star,-50-(radius(star)**0.33)*1,3300,ctx,300); // DRAW STAR
         var g = 0;
         var gm = 1;
         for(var s = 0; s < star.planets.length; s++){
@@ -2154,11 +2318,11 @@ function FirstPlanet(star){
             if(jj[s].isPlanet){
                 if(jj[s].isStar){
                 } else {
-                    drawPlanet(jj[s],g,gt,ctx,250);
+                    drawPlanet(jj[s],g,gt,ctx,300);
                     // DRAW PLANET
                     if(jj[s].moons.length > 0){
                         kk = sortByDistance(jj[s].moons);
-                        var g2 = 250+((radius(jj[s])**0.33)*2);
+                        var g2 = 300+((radius(jj[s])**0.33)*2);
                         for(var t = 0; t < jj[s].moons.length; t++){
                             g2 += (radius(kk[t])**0.33)*3
                             if(t>0){
@@ -2174,8 +2338,8 @@ function FirstPlanet(star){
             } else {
                 if (jj[s].planets.length == 0){
                     
-                    drawCircle("rgb(255,255,0)",(g/gt)*3300+250,250,((radius(jj[s])**0.33)*1),ctx); // DRAW STAR
-                    drawPlanet(jj[s],g,gt,ctx,250);
+                    drawCircle("rgb(255,255,0)",(g/gt)*3300+250,300,((radius(jj[s])**0.33)*1),ctx); // DRAW STAR
+                    drawPlanet(jj[s],g,gt,ctx,300);
                     
                     
                 } else {
@@ -2247,6 +2411,19 @@ function FirstPlanet(star){
             }
         }
         image(imageobjs["img/planeticons/shade.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+        if(planet.rings){
+            
+            ctx.fillStyle="rgb(0,0,0)";
+            ctx.lineWidth=3;
+            ctx.beginPath();
+            ctx.rect((g/gt)*3300+250-((radius(planet)**0.33)*1.5),g2-((radius(planet)**0.33)*0.15),((radius(planet)**0.33)*3),((radius(planet)**0.33)*0.3));
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle="rgb(127,127,127)";
+            ctx.rect((g/gt)*3300+250-((radius(planet)**0.33)*1.5),g2-((radius(planet)**0.33)*0.1),((radius(planet)**0.33)*3),((radius(planet)**0.33)*0.2));
+            ctx.fill();
+            ctx.lineWidth=1;
+        }
         ctx.save();
         ctx.fillStyle="rgb(255,255,255)";
         ctx.font=Math.min(Math.max(Math.ceil(radius(planet)**0.33),20),40)+ "px Comfortaa"
@@ -2364,8 +2541,10 @@ function FirstPlanet(star){
      div2.innerHTML = " "
     var div = document.createElement("div");
     div.classList.add("system");
+    
     div.innerHTML = "<p>Whoopsie! Something didn't work. Have you checked that your JSON is correct? If so, then it might be an issue with the app - notify me!</p> <hr> <p>Error: <span class='red'>"+error.message+"</span></p>"
     div2.appendChild(div);
+    console.warn(error);
 }
     }
 
@@ -2432,15 +2611,37 @@ function FirstPlanet(star){
                 } else {
                     var carykh = lumaToMass(system.parentbody.luma)
                 }
-                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Year: " + (OrbitToYear(distanceFromParent(system),carykh)*365).toFixed(2) + " days",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Year: " + (OrbitToYear(distanceFromParent(system),carykh)*365).toFixed(2) + " days",div,"p",true);
+                if(system.dayCycle != null){
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> Day: " + (system.dayCycle).toFixed(2) + " days",div,"p",true)
+                } else {
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> <span class='red'> Planet does not contain day cycle information! Add dayCycle property to JSON</span>",div,"p",true)
+                }
+                if(system.tidalLock != null){
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> Tidally locked: " + tidalLockingNames[system.tidalLock],div,"p",true)
+                } else {
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",div,"p",true)
+                }
+                
             } else if(!(system.parentbody.isStar)){
                 if(system.name == undefined){
                 addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: Salibe",div,"h3",true);
             }else{
                 addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: "+toTitleCase(system.name),div,"h3",true);
             }
-                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from planet: " + distanceFromParent(system).toFixed(5) + " AU",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from planet: " + distanceFromParent(system).toFixed(5) + " AU (" + (AUToKm(distanceFromParent(system))/radius(system.parentbody)).toFixed(5) + " planetary radii)",div,"p",true)
+                
                 addline("<img class='icon whiteicon' src='img/iconSystem.png'> Month: " + (OrbitToYear(distanceFromParent(system),system.parentbody.mass/333000)*365).toFixed(2) + " days",div,"p",true)
+                if(system.dayCycle != null){
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> Day: " + (system.dayCycle).toFixed(2) + " days",div,"p",true)
+                } else {
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> <span class='red'> Planet does not contain day cycle information! Add dayCycle property to JSON</span>",div,"p",true)
+                }
+                if(system.tidalLock != null){
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> Tidally locked: " + tidalLockingNames[system.tidalLock],div,"p",true)
+                } else {
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",div,"p",true)
+                }
             } else {
                 if(system.name == undefined){
                 addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: Salibe",div,"h3",true);
@@ -2547,6 +2748,9 @@ function FirstPlanet(star){
 
             
         }
+        if(system.rings){
+                addline("<img class='icon whiteicon' src='img/iconSystem.png'><span class='yellow'> Has rings </span> ",div,"p",true)
+            }
         if(system.gas == 0){
             if(system.geoactive){
                 addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geologically active: YES",div,"p",true)
@@ -2633,10 +2837,10 @@ function Test2(){
     var canvas = document.createElement("canvas");
     var canvascontainer = document.createElement("div");
     canvascontainer.appendChild(canvas);
-    canvascontainer.setAttribute("style","position:relative;width:100%;aspect-ratio:37/13;margin-bottom:0px;margin-top:0px;");
+    canvascontainer.setAttribute("style","position:relative;width:100%;aspect-ratio:37/15;margin-bottom:0px;margin-top:0px;");
     var canvas2;
     canvas.setAttribute("width","3700");
-    canvas.setAttribute("height","1300");
+    canvas.setAttribute("height","1500");
     canvas.classList.add("systemdisplay");
     var ctx = canvas.getContext("2d");
     ctx.imageSmoothingQuality="high";
