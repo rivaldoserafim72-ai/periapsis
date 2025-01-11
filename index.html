@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <title>Periapsis</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Metrophobic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
-    <style>
+    <style crossorigin="anonymous">
   :root {
     --textcolor: rgb(255,255,255);
             --textcolorb: rgb(190, 234, 255);        
@@ -205,7 +205,7 @@
         h3 {
             font-family: var(--font);
             font-weight:bold;
-            font-size: x-large;
+            font-size: 2em;
             color: var(--textcolorb);
         }
         .systemcontainer h3 {
@@ -216,13 +216,13 @@
         h1 {
             font-family: var(--hfont);
             color: var(--textcolorb);
-            font-size: 50;
+            font-size: 3em;
             text-align: center;
         }
         .infocontainer h1 {
             font-family: var(--hfont);
             color: var(--textcolorb);
-            font-size: 50;
+            font-size: 3em;
             text-align: center;
         }
         html {
@@ -235,7 +235,7 @@
             overflow-y: scroll;
             overflow-x: scroll;
             margin-right: 0px;
-            
+            font-size: 13px;
         }
         .main {
             width: 92%;
@@ -343,7 +343,7 @@
             height: 150px;
             font-family: var(--font);
             font-weight:bold;
-            font-size: xx-large;
+            font-size: 2em;
             color: var(--textcolor);
             border: 0px;
             border-radius: var(--borderradiusdf);
@@ -401,24 +401,51 @@
             scrollbar-color:var(--bgcolor),var(--scrollcolor);
             overflow-y:scroll; 
             overflow-x:hidden;
-            height:1000px; 
+            height:80vh; 
             background: var(--insetcolor);
-            padding: 15px;
+            padding: 1vw;
             border-radius: var(--borderradiusdf);
             box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
-        }
+            position: relative;
+                }
         .system2{
+            
             scrollbar-width:thin;
             scrollbar-color:var(--bgcolor),var(--scrollcolor);
             
-            overflow-x:hidden;
+            overflow:hidden;
             
             background: var(--insetcolor2);
-            padding: 15px;
+            margin: 1vw;
+            padding: 1vw;
             border-radius: var(--borderradiusdf);
             box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
+           position:relative;
+           resize:vertical;
+            
+        }
+        .systemsub {
+            position:absolute;
+            right:0px;
+            left:13vw;
+            top: 0px;
+            margin-left: auto;
+            scroll-behavior:auto;
+            overflow-y:scroll;
+            height:100%;
+            min-height:auto;
+        }
+        .systemsub .systemsub {
+            position:absolute;
+            right:0px;
+            left:15vw;
+            top: 0px;
+            margin-left: auto;
+            scroll-behavior:auto;
+            overflow-y:scroll;
+            height:100%;
         }
         .system2 .system2{
             scrollbar-width:thin;
@@ -431,6 +458,11 @@
             border-radius: var(--borderradiusdf);
             box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
+            min-height:38vh;
+        }
+        .nosat {
+            height: 100%;
+            resize:none;
         }
         .system2 .system2 .system2{
             scrollbar-width:thin;
@@ -443,6 +475,10 @@
             border-radius: var(--borderradiusdf);
             box-shadow: inset 0px 0px 16px  var(--innershadowcolor);
             transition: 0.15s;
+            min-height:36vh;
+        }
+        .systemsub .systemStarTall{
+            min-height:80vh;
         }
         #csvout p {
             font-family: monospace;
@@ -579,7 +615,7 @@
             color: rgb(210,160,110)
         }
         .icon {
-            height: 32px;
+            height: 1.5em;
             padding: 0px;
             vertical-align: middle;
         }
@@ -588,7 +624,7 @@
             filter: var(--whiteiconfilter);
         }
         .icon2 {
-            height: 64px;
+            height: 2em;
             padding: 0px;
             vertical-align: middle;
         }
@@ -648,6 +684,12 @@
     .planetscan p {
         font-family: 'Consolas', 'Courier New', Courier, monospace;
         
+    }
+    .systemMain {
+        width: 13vw;
+    }
+    .system2 .systemMain {
+        width: 15vw;
     }
     .switch {
   position: relative;
@@ -711,6 +753,34 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 } 
+
+@media (max-width: 1728px) {
+
+body {
+
+  font-size:11px;
+
+}
+
+}
+@media (max-width: 1280px) {
+
+body {
+
+  font-size: 9px;
+
+}
+
+}
+@media (max-width: 720px) {
+
+body {
+
+  font-size: 7px;
+
+}
+
+}
         
     </style>
   </head>
@@ -719,7 +789,7 @@ input:checked + .slider:before {
         <body>
             <div class="navbar">
             <img class="titleimg" src="img/titleimg3.png">
-            <h1> v0.5001 Horologium</h1>
+            <h1> v0.5011 Fornax</h1>
             <hr>
             <h3 class="patchnotes">System Generation</h3>
         
@@ -771,10 +841,6 @@ input:checked + .slider:before {
             <p></p>
             <p class="patchnotes">Systems generated:</p>
             <p class="progress patchnotes"></p>-->
-            <hr>
-            <p></p>
-            <h3 class="patchnotes">Other</h3>
-            <p class="patchnotes">Calculators</p>
             <!--<button onClick="switchTheme();" class="genbutton">Switch theme</button>-->
             <p></p>
             <hr>
@@ -782,6 +848,14 @@ input:checked + .slider:before {
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
          
                 <h1 class="patchnotes"> PATCHNOTES</h1>
+                <h3 class="patchnotes">release 0.5011 | Fornax</h3>
+                <p class="patchnotes">- hotfix: fixed moon daycycles not being set correctly</p>
+                <p class="patchnotes">- made geologic activity now a lot more detailed; there are now 3 different types: volcanic, ultra-volcanic, and tectonic. all planets generated prior to this will have "none" or "volcanic".</p>
+                <p class="patchnotes">- updated system visualizations with new alternate planet sprites based on size, geologic activity, and metal content</p>
+                <p class="patchnotes">- system now updates in real-time when you edit the json</p>
+                <p class="patchnotes">- added some more error handling for json</p>
+                <p class="patchnotes">- added a button to hide and show the visualizations (it's in the json menu)</p>
+                <p class="patchnotes">- new layout for the system info panel that works better on horizontally-oriented screens</p>
                 <h3 class="patchnotes">release 0.5001 | Horologium</h3>
                 <p class="patchnotes">- app is now in a state where it should be functional for most use</p>
                 <p class="patchnotes"><b><u>- the long-awaited Horologium update is here! Features:</u></b></p>
@@ -825,12 +899,7 @@ input:checked + .slider:before {
             <p class="patchnotes">- and all the planets are named Salibe, what kinda generator is this</p>
             <hr>
             <h1 class="patchnotes"> COMING SOON</h1>  
-            <h3 class="patchnotes">0.4041 | Horologium - planned features: </h3>
-            <p class="patchnotes">- planetary rings</p>
-            <p class="patchnotes">- rotation periods and tidal locking</p>
-            <p class="patchnotes">- binary planets and unterplanets</p>   
-            <p class="patchnotes">- hopefully full release of 0.5 at this point, depends on what I remember to add</p>   
-            <h3 class="patchnotes">Number TBD | Sagittarius - planned features:
+            <h3 class="patchnotes">Indeterminate | Sagittarius - planned features:
             </h3>
             <p class="patchnotes">- red giants</p>
             <p class="patchnotes">- white dwarfs</p>
@@ -864,7 +933,7 @@ input:checked + .slider:before {
                 <button onClick="toggleJSONEditor();" class="genbutton">Open JSON editor</button>
                 <div style="display:none;" id="jsoneditor">
                     <p> Warning: Hitting "Generate" OVERWRITES this text field! </p>
-                    <textarea type="text" class="genbutton3" placeholder="{
+                    <textarea type="text" class="genbutton3" onkeyup="updateSystemAlt();" placeholder="{
         'isStar': true,
         'isPlanet': false, ..." id="jsoninput"></textarea>
                     <div>
@@ -876,6 +945,7 @@ input:checked + .slider:before {
                         <input type="button" id="loadFile" class="genbutton" style="width:350px; display:inline; text-align:center; text-wrap:wrap;" value="Choose SOLAR file" onclick="document.getElementById('file').click();" />
                         <button onClick="loadSystem();" class="genbutton" style="width:350px; display:inline; text-align:center; text-wrap:wrap;">Load selected SOLAR file</button>
                         <input type="file" style="display:none;" id="file" name="file"/>
+                        <button onClick="toggleCanvases();" class="genbutton" style="width:350px; display:inline; text-align:center; text-wrap:wrap;">Toggle system displays</button>
                     </div>
                     
                 </div>
@@ -931,6 +1001,7 @@ function toTitleCase(str) {
 var bannedWords = [
     "rape",
     "nig",
+    "hoe",
     "neg",
     "fuk",
     "fuc",
@@ -956,7 +1027,9 @@ var bannedWords = [
     "pipi",
     "fag",
     "phag",
-    "pedo"
+    "pedo",
+    "ureth",
+    "urin",
 ]
 function generatePlanetName() {
     
@@ -1050,6 +1123,30 @@ var imgsrcs =[
     "img/planeticons/waterOverlay1.png",
     "img/planeticons/waterOverlay2.png",
     "img/planeticons/waterOverlay3.png",
+    "img/planeticons2/tile000.png",
+    "img/planeticons2/tile001.png",
+    "img/planeticons2/tile002.png",
+    "img/planeticons2/tile003.png",
+    "img/planeticons2/tile004.png",
+    "img/planeticons2/tile006.png",
+    "img/planeticons2/tile007.png",
+    "img/planeticons2/tile008.png",
+    "img/planeticons2/tile009.png",
+    "img/planeticons2/tile010.png",
+    "img/planeticons2/tile012.png",
+    "img/planeticons2/tile013.png",
+    "img/planeticons2/tile014.png",
+    "img/planeticons2/tile015.png",
+    "img/planeticons2/tile016.png",
+    "img/planeticons2/tile018.png",
+    "img/planeticons2/tile019.png",
+    "img/planeticons2/tile020.png",
+    "img/planeticons2/tile021.png",
+    "img/planeticons2/tile022.png",
+    "img/planeticons2/tile024.png",
+    "img/planeticons2/tile028.png",
+    "img/planeticons2/tile030.png",
+    "img/planeticons2/tile034.png"
 ]
 var systypeNames = [
     "Random",
@@ -1104,7 +1201,7 @@ class Planet{
         this.atmobasegas="none";
         this.greenhouseEffect=1;
         this.liquid=-1;
-        this.geoactive=false;
+        this.geoactive=0;
         this.life=0;
         this.lifeLocation="subglacial";
         this.civ=false;
@@ -1151,12 +1248,19 @@ class Star{
         this.planets=planets;
     }
 }
+window.mobileCheck = function() {
+  let check = false;
+  (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+  return check;
+};
 var t = document.getElementById("jsoninput");
 async function loadSystem(){
     console.log("Began loading system!")
     const selectedFile = document.getElementById("file").files[0];
     const systext = await selectedFile.text();
     document.getElementById("jsoninput").value = systext;
+    console.log("Finished loading system!")
+    updateSystem();
 }
 function saveTextAsFile(textToWrite, fileNameToSaveAs)
     {
@@ -1183,7 +1287,7 @@ function saveTextAsFile(textToWrite, fileNameToSaveAs)
     	downloadLink.click();
     }
 
-function distance(object){
+function distance2(object){
     if(object.star==undefined){
         
         return object.distanceFromParent;
@@ -1199,14 +1303,36 @@ function distance(object){
 }
 
 function distanceFromParent(planetOutput){
+    try{
+    if(planetOutput.parentbody.isStar){
+        return planetOutput.AUSun * Math.sqrt(planetOutput.parentbody.luma);
+    } 
+}catch{
+    console.log(planetOutput);
+    if(planetOutput.parentbody != undefined){
+        if(planetOutput.parentbody.planets!=undefined){
+            if(planetOutput.parentbody.planets.length >0){
+                throw("Error calculating distance for " + planetOutput.name);
+            }
+            throw(planetOutput.name + "'s parentbody doesn't contain a reference to any planets! Do you have the wrong parentbody set?");
+        }
+        throw(planetOutput.name + "'s parentbody doesn't contain a planets array! Do you have the wrong parentbody set?");
+    }
+    throw(planetOutput.name + "'s parentbody doesn't contain a planets array! Do you have the wrong parentbody set?");    
+    
+}
     if(planetOutput.isPlanet){
-        if(planetOutput.parentbody.isStar && distance(planetOutput) != undefined){// correct distanceFromParent for major planets
-        return distance(planetOutput); 
-    } else {
+        if(planetOutput.parentbody.isStar && distance2(planetOutput) != undefined){// correct distanceFromParent for major planets
+
+        return distance2(planetOutput); 
+    } else if(planetOutput.distanceFromParent != undefined) {
+
         return planetOutput.distanceFromParent;
     }
     }
-    return planetOutput.AUSun * Math.sqrt(planetOutput.parentbody.luma);
+    
+
+
 }
 
 function radius(object){
@@ -1307,6 +1433,46 @@ function toggleSystemType() {
     };
     systypeButton.textContent = systypeNames[systypeInput];
 }
+function changeStylesheetRule(stylesheet, selector, property, value) {
+    // Make the strings lowercase
+    selector = selector.toLowerCase();
+    property = property.toLowerCase();
+    value = value.toLowerCase();
+    
+    // Change it if it exists
+    for(var i = 0; i < stylesheet.cssRules.length; i++) {
+        var rule = stylesheet.cssRules[i];
+        if(rule.selectorText === selector) {
+            rule.style[property] = value;
+            return;
+        }
+    }
+  
+    // Add it if it does not
+    stylesheet.insertRule(selector + " { " + property + ": " + value + "; }", 0);
+}
+//the stylesheet being passed in is document.styleSheets[0]
+function getStylesheetRule(stylesheet, selector, property) {
+    selector = selector.toLowerCase();
+    property = property.toLowerCase();
+    for(var i = 0; i < stylesheet.cssRules.length; i++) { // Error occurs here
+        var rule = stylesheet.cssRules[i];
+        if(rule.selectorText === selector) {
+            return rule.style[property];
+        }
+    }
+}
+var styleElement = document.createElement("style");
+document.head.appendChild(styleElement);
+var mainStyle = styleElement.sheet
+
+function toggleCanvases(){
+    if(getStylesheetRule(mainStyle,".systemdisplay","display") == "none"){
+        changeStylesheetRule(mainStyle,".systemdisplay","display","block");
+    } else {
+        changeStylesheetRule(mainStyle,".systemdisplay","display","none");
+    }
+}
 var jk = 0;
 var publicStar;
 function Test(){
@@ -1396,9 +1562,6 @@ function lowTemp(planet){
 function highTemp(planet){
     if(planet.greenhouseEffect != undefined){
         if(planet.tidalLock == 1 && planet.parentbody.isPlanet == false){
-            console.log("yes");
-            console.log("Tidal+"+max(planetTemp(planet)/ (1-(0.320 * (1/((6*planet.greenhouseEffect - 5)**2)))),5));
-            console.log("Diurnal+"+planetTemp(planet)/ (1-(0.155 * (1/((6*planet.greenhouseEffect - 5)**2)))));
             return max(planetTemp(planet)/ (1-(0.310 * (1/((6*planet.greenhouseEffect - 5)**2)))),5);
         } else {
             return planetTemp(planet)/ (1-(0.155 * (1/((6*planet.greenhouseEffect - 5)**2))));
@@ -1458,7 +1621,6 @@ function atmosphere(planet){
    
             if(highTemp(planet)>=boilingPoint(planet.atmothickness,water) && baseTemperature(planet)<=boilingPoint(planet.atmothickness,water) && planet.AUSun<1){
                 planet.atmobasegas = "carbondioxide"; // runaway greenhouse
-                console.log("RUN AWAY!!!!!!")
                 planet.atmothickness = prng()*50+75;
                 planet.greenhouseEffect = prng()*2+2;
             }
@@ -1490,15 +1652,34 @@ function atmosphere(planet){
             }
         }
     }
-    planet.geoactive = false;
+    planet.geoactive = 0;
     if(planet.parentbody != undefined){
-        if (planet.parentbody.isPlanet && planet.parentbody.mass >= 12 && planet.mass >= (planet.star.age/1000)*prng()/1000+0.0002 && AUToKm(distanceFromParent(planet)) <= radius(planet.parentbody)*15){
-            planet.geoactive = true;
+        if (planet.parentbody.isPlanet // is a moon
+        && planet.parentbody.mass >= 12 // orbiting a gas giant
+        && planet.mass >= (planet.star.age/1000)*prng()/1000+0.0002 // and is young enough
+        && AUToKm(distanceFromParent(planet)) <= radius(planet.parentbody)*15 // and is close enough to the planet
+    ){
+            planet.geoactive = 1;
+            if(AUToKm(distanceFromParent(planet)) <= radius(planet.parentbody)*5 && planet.mass >= 0.003){
+                planet.geoactive = 2;
+            }
         } else {
-            if(planet.mass >= 0.03*(prng()*planet.star.age/10000) || planet.moons.length > 0){
-                planet.geoactive = true;
+            if(planet.mass >= 0.03*(prng()*planet.star.age/10000) // is big enough and young enough 
+            || planet.moons.length > 0 // has a moon
+        ){
+                planet.geoactive = 1;
+                if(planet.mass >= planet.star.age/3000 + 1){
+                    planet.geoactive = 2;
+                }
             }
         }
+    }
+    if(planet.geoactive > 0 // is geologically active
+    && ((planet.liquid == 0 // liquid is set to water
+    && planet.liquidCoverage >= 0) // there is actually water on the planet
+    ||(prng()>0.9&&planet.mass >= 0.2) // but still a random chance otherwise if the planet is big enough
+    )){
+        planet.geoactive = 3; // has plate tectonics
     }
     if(planet.geoactive && planet.liquid == 0 && planet.liquidCoverage >= 0 && prng()<=document.getElementById("lifeChance").value){
 
@@ -1588,6 +1769,9 @@ function generateStar(massLower=0.08,massUpper=8,isPrimary=true,canGeneratePlane
     var jLi = SomehowFindTheInverseOfThisDegree60Polynomial(massLower);
     var kLi = SomehowFindTheInverseOfThisDegree60Polynomial(massUpper);
     var Li = prng()*(kLi-jLi)+jLi; // mass input, assuming main sequence for now (giant stars will not be simulated)
+    if(prng()<Li){
+        var Li = prng()*(kLi-jLi)+jLi;
+    }
     var Li2 = (0.37/0.4)*Li+0.08+(Li**10)*2.5+(Li**60)*4.5; // mass
     var starMin = Math.min(Math.max(document.getElementById("starMin").value,0.085),7.5);
     var starMax = Math.min(Math.max(document.getElementById("starMax").value,0.085),7.5)
@@ -1712,20 +1896,19 @@ function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,vD
     planetOutput.dayCycle = (prng()*10)+0.3;
 
 
-if(mass(planetOutput.star) < 0.2 || planetOutput.isMoon){
-    console.log(planetOutput.star);
+if(mass(planetOutput.star) < 0.2 || planetOutput.parentbody.isPlanet){
     if(planetOutput.star.planets[0] != undefined){
         if(!planetOutput.star.planets[0].isStar){
-            planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,planetOutput.parentbody.mass/333000)*365;
+            planetOutput.dayCycle = OrbitToYear(distanceFromParent(planetOutput),planetOutput.parentbody.mass/333000)*365;
     if(planetOutput.parentbody.isStar){
-        planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,mass(planetOutput.parentbody))*365;
+        planetOutput.dayCycle = OrbitToYear(distanceFromParent(planetOutput),mass(planetOutput.parentbody))*365;
     } 
     planetOutput.tidalLock = 1;
     }
     } else{
-        planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,planetOutput.parentbody.mass/333000)*365;
+        planetOutput.dayCycle = OrbitToYear(distanceFromParent(planetOutput),planetOutput.parentbody.mass/333000)*365;
     if(planetOutput.parentbody.isStar){
-        planetOutput.dayCycle = OrbitToYear(planetOutput.distanceFromParent,mass(planetOutput.parentbody))*365;
+        planetOutput.dayCycle = OrbitToYear(distanceFromParent(planetOutput),mass(planetOutput.parentbody))*365;
     } 
     planetOutput.tidalLock = 1;
     }
@@ -1795,9 +1978,6 @@ if(planetOutput.parentbody.isStar){
     return planetOutput;
 }
 
-function distance(planet){
-    return planet.distanceFromParent;
-}
 function FirstPlanet(star){
     
     if(lumaToMass(star.luma) <= 0.5){ // case 1: star is not large enough (<0.2 mass) to form a large planet; skip this step {depends on star}
@@ -1817,7 +1997,7 @@ function FirstPlanet(star){
                         star.planets.length,
                         1
                     )
-                    if(!((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp))){
+                    if(!((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp))){
                         star.planets.push(kp); // - large planet is placed between 4 and 7 AUSun
                         star.mainPlanet = star.planets.length-1;
                     }
@@ -1843,7 +2023,7 @@ function FirstPlanet(star){
                         star.planets.length,
                         1
                     )
-                    if(!((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp))){
+                    if(!((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp))){
                         star.planets.push(kp); // - large planet is placed between 0.1 and 0.4 AUSun
                         star.mainPlanet = star.planets.length-1;
                     }
@@ -1861,7 +2041,7 @@ function FirstPlanet(star){
                         star.planets.length,
                         1
                     );
-                    if(!((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp))){
+                    if(!((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp))){
                         
                         star.planets.push(kp); // - large planet is placed between 4 and 7 AUSun
                         star.mainPlanet = star.planets.length-1;
@@ -2045,12 +2225,12 @@ function FirstPlanet(star){
         if(AUSun != undefined){
             if(star.mainPlanet != undefined){
                 var kp=generatePlanet(75,star.planets[star.mainPlanet].mass,AUSun,star,star,null,star.planets.length,1);
-                if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+                if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp)))){
                         star.planets.push(kp);
                     };
             } else {
                 var kp=generatePlanet(75,150,AUSun,star,star,null,star.planets.length,1);
-                if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+                if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp)))){
                         star.planets.push(kp);
                     };
             }
@@ -2060,7 +2240,7 @@ function FirstPlanet(star){
         AUSun = determinePlanetPlacement(star,0,9,Math.min(50*sqrt(lumaToMass(star.luma)),66));
         if(AUSun != undefined){
             var kp=(generatePlanet(5,50,AUSun,star,star,null,star.planets.length,2));
-            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp)))){
                         star.planets.push(kp);
                     };
         }
@@ -2073,7 +2253,7 @@ function FirstPlanet(star){
         
         if(AUSun != undefined){
             var kp=(generatePlanet(2,12,AUSun,star,star,null,star.planets.length,0));
-            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp)))){
                         star.planets.push(kp);
                     };
         }
@@ -2091,7 +2271,7 @@ function FirstPlanet(star){
         
         if(AUSun != undefined){
             var kp=(generatePlanet(0.04,3,AUSun,star,star,null,star.planets.length,0));
-            if(!(hillSphere(kp.star)<distance(kp))){
+            if(!(hillSphere(kp.star)<distanceFromParent(kp))){
                         star.planets.push(kp);
                     };
         }
@@ -2103,7 +2283,7 @@ function FirstPlanet(star){
         
         if(AUSun != undefined){
                 var kp=(generatePlanet(0.2,2,AUSun,star,star,null,star.planets.length,0));
-                if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+                if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp)))){
                         star.planets.push(kp);
                     };
         }
@@ -2114,7 +2294,7 @@ function FirstPlanet(star){
         }
         if(AUSun != undefined){
             var kp=(generatePlanet(0.00005,0.005,AUSun,star,star,null,star.planets.length,0));
-            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distance(kp)))){
+            if(!(((kp.star.WD && kp.AUSun<1)||hillSphere(kp.star)<distanceFromParent(kp)))){
                         star.planets.push(kp);
                     };
         }
@@ -2132,7 +2312,6 @@ function FirstPlanet(star){
     }
     function binary(planet){
         var AU = kmToAU(planet.radius()*(4+prng()*10));
-        console.log(planet.radius());
         planet.moons.push(generatePlanet(max(planet.mass/10,0.00005),planet.mass/2,planet.AUSun,planet,planet.star,AU,planet.moons.length,0,true));
     }
     kplan = Math.min(document.getElementById("planettries").value,10)*prng()*1.5;
@@ -2364,6 +2543,8 @@ function FirstPlanet(star){
     }
 
     function drawPlanet (planet,g,gt,ctx,g2) {
+        var tilenum = 0;
+        var name = "";
         if(planet.isPlanet){
             var name = "Salibe";
             if(planet.atmothickness > 0.01){
@@ -2376,15 +2557,80 @@ function FirstPlanet(star){
 
         if(planet.gas > Number.EPSILON){
             if(planet.ice <= Number.EPSILON){
-                image(imageobjs["img/planeticons/gasGiant.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                if(planet.mass >= 100){
+                    image(imageobjs["img/planeticons2/tile030.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                } else{
+                    image(imageobjs["img/planeticons2/tile034.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                }
+                
             } else{
-                image(imageobjs["img/planeticons/iceGiant.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                if(planet.mass >= 15){
+                    image(imageobjs["img/planeticons2/tile024.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                } else{
+                    image(imageobjs["img/planeticons2/tile028.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                }
             }
         } else {
             if(planet.ice <= Number.EPSILON){
-                image(imageobjs["img/planeticons/rockyPlanet.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                if(planet.metal <= 0.1){
+                    if(planet.mass <= 0.008){
+                        image(imageobjs["img/planeticons2/tile004.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                    } else {
+                        if(planet.geoactive == 0){
+                            image(imageobjs["img/planeticons2/tile000.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==1){
+                            image(imageobjs["img/planeticons2/tile001.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==2){
+                            image(imageobjs["img/planeticons2/tile002.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else {
+                            image(imageobjs["img/planeticons2/tile003.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }
+                    }
+                    
+                }else if(planet.metal <= 0.45){
+                    if(planet.mass <= 0.008){
+                        image(imageobjs["img/planeticons2/tile010.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                    } else {
+                        if(planet.geoactive == 0){
+                            image(imageobjs["img/planeticons2/tile006.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==1){
+                            image(imageobjs["img/planeticons2/tile007.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==2){
+                            image(imageobjs["img/planeticons2/tile008.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else {
+                            image(imageobjs["img/planeticons2/tile009.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }
+                    }
+                }else{
+                    if(planet.mass <= 0.008){
+                        image(imageobjs["img/planeticons2/tile016.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                    } else {
+                        if(planet.geoactive == 0){
+                            image(imageobjs["img/planeticons2/tile012.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==1){
+                            image(imageobjs["img/planeticons2/tile013.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==2){
+                            image(imageobjs["img/planeticons2/tile014.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else {
+                            image(imageobjs["img/planeticons2/tile015.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }
+                    }
+                }
+                
             } else{
-                image(imageobjs["img/planeticons/icyPlanet.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                if(planet.mass <= 0.008){
+                        image(imageobjs["img/planeticons2/tile022.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                    } else {
+                        if(planet.geoactive == 0){
+                            image(imageobjs["img/planeticons2/tile018.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==1){
+                            image(imageobjs["img/planeticons2/tile019.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else if(planet.geoactive ==2){
+                            image(imageobjs["img/planeticons2/tile020.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }else {
+                            image(imageobjs["img/planeticons2/tile021.png"],(g/gt)*3300+250,g2,((radius(planet)**0.33)*2),ctx);
+                        }
+                    }
             }
         }
         if(planet.life == 2 && planet.lifeLocation == "surface"){
@@ -2541,10 +2787,28 @@ function FirstPlanet(star){
      div2.innerHTML = " "
     var div = document.createElement("div");
     div.classList.add("system");
+    if(error.stack){
+        div.innerHTML = "<p>Whoopsie! Something didn't work. Have you checked that your JSON is correct? If so, then it might be an issue with the app - notify me!</p> <hr> <p>Error: <span class='red'>"+error.stack+"</span></p>"
+    }else{
+        div.innerHTML = "<p>Whoopsie! Something didn't work. Have you checked that your JSON is correct? If so, then it might be an issue with the app - notify me!</p> <hr> <p>Error: <span class='red'>"+error+"</span></p>"
+    }
     
-    div.innerHTML = "<p>Whoopsie! Something didn't work. Have you checked that your JSON is correct? If so, then it might be an issue with the app - notify me!</p> <hr> <p>Error: <span class='red'>"+error.message+"</span></p>"
     div2.appendChild(div);
     console.warn(error);
+}
+    }
+    function updateSystemAlt(){
+        try {
+        var div = document.createElement("div");
+    div.classList.add("system");
+    var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsoninput").value))
+    
+    var div2 = document.getElementsByClassName("systemcontainer")[0];
+    div2.innerHTML = " "
+    div2.appendChild(drawSystem(div,test_star,false));
+    systemDataToHTML(test_star,div);
+    div2.appendChild(div);
+} catch (error){
 }
     }
 
@@ -2557,191 +2821,258 @@ function FirstPlanet(star){
      var aaa = 0;
      var bbb = 0;
      function parseObjectData(system,div){
-        
+        var divMain = document.createElement("div");
+        divMain.classList.add("systemMain");
+        div.appendChild(divMain);
+
+        var technicalName = "Salibe";
+        if(system.name != undefined){
+            technicalName = system.name;
+        }
+        if(system.parentbody ==undefined){
+            if(system.isPrimary != true){
+                throw(technicalName + `'s parentbody has not been set! If this is the main star, set isPrimary to true; if this is a planet or moon, set its parentbody; the format should be: <br>
+                "parentbody": {<br>
+						"$ref": "$[\"planets\"][1]"<br>
+					}<br>
+                        to reference the second object in the main star's "planets" array.
+                    
+                    `)
+            }
+                
+            }  else {
+                try {
+                    var ggg = system.parentbody.planets.length;
+                } catch {
+                    var ggg = undefined;
+                }
+                try {
+                    var hhh = system.parentbody.moons.length;
+                } catch {
+                    var hhh = undefined;
+                }
+                
+        if(!ggg && !hhh){
+            console.log(system);
+            throw(technicalName + "'s parentbody doesn't contain a reference to any planets! Do you have the wrong parentbody set?");
+            
+        }}
+
+
         if(system.isStar){
+            div.classList.add("systemStarTall");
             if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: Salibe",div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: Salibe",divMain,"h3",true);
             }else{
-                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: "+toTitleCase(system.name),div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: "+toTitleCase(system.name),divMain,"h3",true);
             }
             
             if(system.WD){
                 var l1 = lumaToMass(system.luma);
-                addline("White dwarf (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
-                addline("Main sequence luminosity: "+system.luma.toFixed(5)+"x that of the Sun",div,"p",true);
+                addline("White dwarf (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
+                addline("Main sequence luminosity: "+system.luma.toFixed(5)+"x that of the Sun",divMain,"p",true);
             }else{
-                addline("Main sequence star",div,"p",true);
+                addline("Main sequence star",divMain,"p",true);
                 var l1 = lumaToMass(system.luma);
                 if (l1 <= 0.4){
-                    addline("Spectral type: <span class='typem'>M</span> (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
+                    addline("Spectral type: <span class='typem'>M</span> (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
                 } else if (l1 <= 0.8){
-                    addline("Spectral type: <span class='typek'>K</span> (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
+                    addline("Spectral type: <span class='typek'>K</span> (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
                 }else if (l1 <= 1.04){
-                    addline("Spectral type: <span class='typeg'>G</span> (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
+                    addline("Spectral type: <span class='typeg'>G</span> (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
                 }else if (l1 <= 1.4){
-                    addline("Spectral type: <span class='typef'>F</span> (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
+                    addline("Spectral type: <span class='typef'>F</span> (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
                 }else if (l1 <= 2.1){
-                    addline("Spectral type: <span class='typea'>A</span> (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
+                    addline("Spectral type: <span class='typea'>A</span> (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
                 }else{
-                    addline("Spectral type: <span class='typeb'>B</span> (mass: "+l1.toFixed(2)+"x Sun)",div,"p",true);
+                    addline("Spectral type: <span class='typeb'>B</span> (mass: "+l1.toFixed(2)+"x Sun)",divMain,"p",true);
                 }
-                addline("Luminosity: " +system.luma.toFixed(5)+"x that of the Sun",div,"p",true);
-                addline("Temperature: " +starTemp(system).toFixed(5)+" K",div,"p",true);
+                addline("Luminosity: " +system.luma.toFixed(5)+"x that of the Sun",divMain,"p",true);
+                addline("Temperature: " +starTemp(system).toFixed(5)+" K",divMain,"p",true);
             }
-            addline("Age: " +(system.age/1000).toFixed(2)+" billion years",div,"p",true);
+            addline("Age: " +(system.age/1000).toFixed(2)+" billion years",divMain,"p",true);
             if(system.AUSun != undefined ){
-                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",divMain,"p",true)
             }
-            for(let z1 = 0; z1 < system.planets.length; z1++){
+            var divb=document.createElement("div");
+            div.appendChild(divb);
+            divb.classList.add("systemsub");
+            if(system.planets.length>0){
+                var divb=document.createElement("div");
+            div.appendChild(divb);
+            divb.classList.add("systemsub");
+                for(let z1 = 0; z1 < system.planets.length; z1++){
                 var div2 = document.createElement("div");
             div2.classList.add("system2");
-            div.appendChild(div2)
+            divb.appendChild(div2);
                 parseObjectData(sortByDistance(system.planets)[z1],div2);
             }
+            } else{
+                
+                
+                divc=document.createElement("div");
+            div.appendChild(divc);
+            divc.classList.add("systemsub");
+           
+            var div2 = document.createElement("div");
+           
+            div2.classList.add("system2");
+            div2.classList.add("nosat");
+            divc.appendChild(div2);
+            addline("No satellites",div2,"p",true);
+           
+            
+            }
+            
         } else if (system.isPlanet){
             if(system.parentbody.isStar && system.mass >= 0.01){
                 if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: Salibe",div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: Salibe",divMain,"h3",true);
             }else{
-                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: "+toTitleCase(system.name),div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: "+toTitleCase(system.name),divMain,"h3",true);
             }
-                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",div,"p",true)
+            
+            try {
+                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",divMain,"p",true)
+            } catch {
+                
+            }
                 if(system.parentbody.planets[0].isStar && system.parentbody.planets[0].AUSun <= 0.3){
                     var carykh = lumaToMass(system.parentbody.luma)+lumaToMass(system.parentbody.planets[0].luma)
                 } else {
                     var carykh = lumaToMass(system.parentbody.luma)
                 }
-                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Year: " + (OrbitToYear(distanceFromParent(system),carykh)*365).toFixed(2) + " days",div,"p",true);
+                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Year: " + (OrbitToYear(distanceFromParent(system),carykh)*365).toFixed(2) + " days",divMain,"p",true);
                 if(system.dayCycle != null){
-                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> Day: " + (system.dayCycle).toFixed(2) + " days",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> Day: " + (system.dayCycle).toFixed(2) + " days",divMain,"p",true)
                 } else {
-                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> <span class='red'> Planet does not contain day cycle information! Add dayCycle property to JSON</span>",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> <span class='red'> Planet does not contain day cycle information! Add dayCycle property to JSON</span>",divMain,"p",true)
                 }
                 if(system.tidalLock != null){
-                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> Tidally locked: " + tidalLockingNames[system.tidalLock],div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> Tidally locked: " + tidalLockingNames[system.tidalLock],divMain,"p",true)
                 } else {
-                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",divMain,"p",true)
                 }
                 
             } else if(!(system.parentbody.isStar)){
                 if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: Salibe",div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: Salibe",divMain,"h3",true);
             }else{
-                addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: "+toTitleCase(system.name),div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: "+toTitleCase(system.name),divMain,"h3",true);
             }
-                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from planet: " + distanceFromParent(system).toFixed(5) + " AU (" + (AUToKm(distanceFromParent(system))/radius(system.parentbody)).toFixed(5) + " planetary radii)",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from planet: " + distanceFromParent(system).toFixed(5) + " AU (" + (AUToKm(distanceFromParent(system))/radius(system.parentbody)).toFixed(5) + " planetary radii)",divMain,"p",true)
                 
-                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Month: " + (OrbitToYear(distanceFromParent(system),system.parentbody.mass/333000)*365).toFixed(2) + " days",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Month: " + (OrbitToYear(distanceFromParent(system),system.parentbody.mass/333000)*365).toFixed(2) + " days",divMain,"p",true)
                 if(system.dayCycle != null){
-                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> Day: " + (system.dayCycle).toFixed(2) + " days",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> Day: " + (system.dayCycle).toFixed(2) + " days",divMain,"p",true)
                 } else {
-                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> <span class='red'> Planet does not contain day cycle information! Add dayCycle property to JSON</span>",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSystem.png'> <span class='red'> Planet does not contain day cycle information! Add dayCycle property to JSON</span>",divMain,"p",true)
                 }
                 if(system.tidalLock != null){
-                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> Tidally locked: " + tidalLockingNames[system.tidalLock],div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> Tidally locked: " + tidalLockingNames[system.tidalLock],divMain,"p",true)
                 } else {
-                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",divMain,"p",true)
                 }
             } else {
                 if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: Salibe",div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: Salibe",divMain,"h3",true);
             }else{
-                addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: "+toTitleCase(system.name),div,"h3",true);
+                addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: "+toTitleCase(system.name),divMain,"h3",true);
             }
-                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",divMain,"p",true)
                 if(system.parentbody.planets[0].isStar && system.parentbody.planets[0].AUSun <= 0.3){
                     var carykh = lumaToMass(system.parentbody.luma)+lumaToMass(system.parentbody.planets[0].luma)
                 } else {
                     var carykh = lumaToMass(system.parentbody.luma)
                 }
-                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Year: " + (OrbitToYear(distanceFromParent(system),carykh)*365).toFixed(2) + " days",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconSystem.png'> Year: " + (OrbitToYear(distanceFromParent(system),carykh)*365).toFixed(2) + " days",divMain,"p",true)
             }
-            addline("<img class='icon whiteicon' src='img/iconMass.png'> Mass: " + system.mass.toFixed(6) +  "x Earth",div,"p",true)
-            addline("<img class='icon whiteicon' src='img/iconRadius.png'> Radius: " + radius(system).toFixed(1) + " km (" + (radius(system)/6371).toFixed(3)+"x Earth)",div,"p",true)
-            addline("<img class='icon whiteicon' src='img/iconComposition.png'> Density: " + density(system).toFixed(1) +  "g/cm³",div,"p",true)
-            addline("<img class='icon whiteicon' src='img/iconGravity.png'> Surface gravity: " + ((system.mass*9.8)/((radius(system)/6371)**2)).toFixed(1) +  " m/s²",div,"p",true)
+            addline("<img class='icon whiteicon' src='img/iconMass.png'> Mass: " + system.mass.toFixed(6) +  "x Earth",divMain,"p",true)
+            addline("<img class='icon whiteicon' src='img/iconRadius.png'> Radius: " + radius(system).toFixed(1) + " km (" + (radius(system)/6371).toFixed(3)+"x Earth)",divMain,"p",true)
+            addline("<img class='icon whiteicon' src='img/iconComposition.png'> Density: " + density(system).toFixed(1) +  "g/cm³",divMain,"p",true)
+            addline("<img class='icon whiteicon' src='img/iconGravity.png'> Surface gravity: " + ((system.mass*9.8)/((radius(system)/6371)**2)).toFixed(1) +  " m/s²",divMain,"p",true)
             if(system.gas > 0){
                 if(system.ice > 0){
-                    addline("<img class='icon whiteicon' src='img/iconComposition.png'> Is a <img class='icon' src='img/iconIceGiant.png'> <span class='icegiant'> ice giant</span> ("+(system.gas*100).toFixed(0)+"% gas, "+(system.ice*100).toFixed(0)+"% ice, "+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconComposition.png'> Is a <img class='icon' src='img/iconIceGiant.png'> <span class='icegiant'> ice giant</span> ("+(system.gas*100).toFixed(0)+"% gas, "+(system.ice*100).toFixed(0)+"% ice, "+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",divMain,"p",true)
                 } else {
-                    addline("<img class='icon whiteicon' src='img/iconComposition.png'> Is a <img class='icon' src='img/iconGasGiant.png'> <span class='gasgiant'> gas giant</span> ("+(system.gas*100).toFixed(0)+"% gas, "+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconComposition.png'> Is a <img class='icon' src='img/iconGasGiant.png'> <span class='gasgiant'> gas giant</span> ("+(system.gas*100).toFixed(0)+"% gas, "+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",divMain,"p",true)
                 }
             } else {
                 if(system.ice > 0){
-                    addline("<img class='icon whiteicon' src='img/iconComposition.png'> Composition: <img class='icon' src='img/iconIcy.png'> <span class='icy'> icy</span> ("+(system.ice*100).toFixed(0)+"% ice, "+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconComposition.png'> Composition: <img class='icon' src='img/iconIcy.png'> <span class='icy'> icy</span> ("+(system.ice*100).toFixed(0)+"% ice, "+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",divMain,"p",true)
                 } else {
                     if (system.metal > 0.6){
-                        addline("<img class='icon whiteicon' src='img/iconComposition.png'> Composition: <img class='icon' src='img/iconMetallic.png'> <span class='metallic'> metallic</span> ("+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",div,"p",true)
+                        addline("<img class='icon whiteicon' src='img/iconComposition.png'> Composition: <img class='icon' src='img/iconMetallic.png'> <span class='metallic'> metallic</span> ("+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",divMain,"p",true)
                     } else {
-                        addline("<img class='icon whiteicon' src='img/iconComposition.png'> Composition: <img class='icon' src='img/iconRocky.png'> <span class='rocky'> rocky</span> ("+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",div,"p",true)
+                        addline("<img class='icon whiteicon' src='img/iconComposition.png'> Composition: <img class='icon' src='img/iconRocky.png'> <span class='rocky'> rocky</span> ("+(system.rock*100).toFixed(0)+"% rock, "+(system.metal*100).toFixed(0)+"% metal)",divMain,"p",true)
                     }
                 }
             }
             if(baseTemperature(system)<100){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp1.png'><span class='purple'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp1.png'><span class='purple'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             } else
             if(baseTemperature(system)<173){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp2.png'><span class='blue'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp2.png'><span class='blue'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             } else
             if(baseTemperature(system)<250){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp3.png'><span class='lightblue'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp3.png'><span class='lightblue'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             }  else
             if(baseTemperature(system)<320){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp4.png'><span class='lightgreen'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp4.png'><span class='lightgreen'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             }else
             if(baseTemperature(system)<400){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp5.png'><span class='yellow'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp5.png'><span class='yellow'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             }else
             if(baseTemperature(system)<550){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp6.png'><span class='orange'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp6.png'><span class='orange'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             }else {
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp7.png'><span class='red'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Base temperature: <img class='icon' src='img/iconTemp7.png'><span class='red'>" + baseTemperature(system).toFixed(0) + " Kelvin ("+ (baseTemperature(system)-273).toFixed(0) + " Celsius)</span>",divMain,"p",true)
             }
 
             if(system.atmothickness > 0 ){
                 if(planetTemp(system) != undefined){
                 if(planetTemp(system)<100){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp1.png'><span class='purple'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp1.png'><span class='purple'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             } else
             if(planetTemp(system)<173){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp2.png'><span class='blue'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp2.png'><span class='blue'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             } else
             if(planetTemp(system)<250){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp3.png'><span class='lightblue'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp3.png'><span class='lightblue'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             }  else
             if(planetTemp(system)<320){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp4.png'><span class='lightgreen'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp4.png'><span class='lightgreen'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             }else
             if(planetTemp(system)<400){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp5.png'><span class='yellow'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp5.png'><span class='yellow'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             }else
             if(planetTemp(system)<550){
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp6.png'><span class='orange'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp6.png'><span class='orange'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             }else {
-                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp7.png'><span class='red'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconTemperature.png'> Temperature: <img class='icon' src='img/iconTemp7.png'><span class='red'>" + planetTemp(system).toFixed(0) + " Kelvin ("+ (planetTemp(system)-273).toFixed(0) + " Celsius, "+lowTemp(system).toFixed(0) + "K "+ (lowTemp(system)-273).toFixed(0) +"C low, "+highTemp(system).toFixed(0) + "K "+ (highTemp(system)-273).toFixed(0) +"C high)</span>",divMain,"p",true)
             }
             }
-            addline("<img class='icon whiteicon' src='img/iconAtmosphere.png'> Atmosphere thickness: <img class='icon' src='img/iconAtmo4.png'><span class=lightblue>"+(system.atmothickness*100).toFixed(0)+"%</span> that of Earth's atmosphere, contributing to a <span class='orange'>"+((system.greenhouseEffect-1)*100).toFixed(0)+"%</span> increase in temperature",div,"p",true)
+            addline("<img class='icon whiteicon' src='img/iconAtmosphere.png'> Atmosphere thickness: <img class='icon' src='img/iconAtmo4.png'><span class=lightblue>"+(system.atmothickness*100).toFixed(0)+"%</span> that of Earth's atmosphere, contributing to a <span class='orange'>"+((system.greenhouseEffect-1)*100).toFixed(0)+"%</span> increase in temperature",divMain,"p",true)
             if(system.atmobasegas=="carbondioxide"){
-                addline("<img class='icon whiteicon' src='img/iconAtmosphere.png'> Atmosphere is primarily <img class='icon' src='img/iconCarbonDioxide.png'><span class=orange>carbon dioxide</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconAtmosphere.png'> Atmosphere is primarily <img class='icon' src='img/iconCarbonDioxide.png'><span class=orange>carbon dioxide</span>",divMain,"p",true)
             }else{
-                addline("<img class='icon whiteicon' src='img/iconAtmosphere.png'> Atmosphere is primarily <img class='icon' src='img/iconNitrogen.png'><span class=lightblue>nitrogen</span>",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconAtmosphere.png'> Atmosphere is primarily <img class='icon' src='img/iconNitrogen.png'><span class=lightblue>nitrogen</span>",divMain,"p",true)
                 
             }
             
             if(system.liquidCoverage > 0){
                 if(system.liquid == 0){
-                    addline("<img class='icon whiteicon' src='img/iconLiquid.png'> Liquid: <img class='icon' src='img/iconWater.png'><span class=blue> water </span>, covering "+(system.liquidCoverage*100).toFixed(0)+"% of the surface",div,"p",true);
+                    addline("<img class='icon whiteicon' src='img/iconLiquid.png'> Liquid: <img class='icon' src='img/iconWater.png'><span class=blue> water </span>, covering "+(system.liquidCoverage*100).toFixed(0)+"% of the surface",divMain,"p",true);
                     bbb++;
                     
                     if(lowTemp(system)<water.melting){
-                        addline("<img class='icon whiteicon' src='img/iconIcy.png'> Has ice caps",div,"p",true);
+                        addline("<img class='icon whiteicon' src='img/iconIcy.png'> Has ice caps",divMain,"p",true);
                     }
                 }else 
                 if(system.liquid == 1){
-                    addline("<img class='icon whiteicon' src='img/iconLiquid.png'> Liquid: <img class='icon' src='img/iconMethanum.png'><span class=lightgray> methanum </span>, covering "+(system.liquidCoverage*100).toFixed(0)+"% of the surface",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconLiquid.png'> Liquid: <img class='icon' src='img/iconMethanum.png'><span class=lightgray> methanum </span>, covering "+(system.liquidCoverage*100).toFixed(0)+"% of the surface",divMain,"p",true)
                     if(lowTemp(system)<methanum.melting){
-                        addline("<img class='icon whiteicon' src='img/iconIcy.png'> Has ice caps",div,"p",true);
+                        addline("<img class='icon whiteicon' src='img/iconIcy.png'> Has ice caps",divMain,"p",true);
                     }
                 }
             }
@@ -2749,37 +3080,60 @@ function FirstPlanet(star){
             
         }
         if(system.rings){
-                addline("<img class='icon whiteicon' src='img/iconSystem.png'><span class='yellow'> Has rings </span> ",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconSystem.png'><span class='yellow'> Has rings </span> ",divMain,"p",true)
             }
         if(system.gas == 0){
             if(system.geoactive){
-                addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geologically active: YES",div,"p",true)
+                if(system.geoactive == 1 || (system.geoactive == true && system.geoactive <= 1)){
+                    addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geological activity: Non-tectonic low",divMain,"p",true)
+                }else if (system.geoactive == 2){
+                    addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geological activity: Non-tectonic high",divMain,"p",true)
+                }else if (system.geoactive == 3){
+                    addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geological activity: Tectonic",divMain,"p",true)
+                }else;
+                
             }else{
-                addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geologically active: NO",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconActivity.png'> Geological activity: None",divMain,"p",true)
             }
             if(system.life > 0){
                 
                 if(system.life == 1){
-                    addline("<img class='icon whiteicon' src='img/iconLife.png'> Life: <img class='icon' src='img/iconProkaryotic.png'><span class='purple'> precambrian </span> ("+system.lifeLocation+")",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconLife.png'> Life: <img class='icon' src='img/iconProkaryotic.png'><span class='purple'> precambrian </span> ("+system.lifeLocation+")",divMain,"p",true)
                 }else{
-                    addline("<img class='icon whiteicon' src='img/iconLife.png'> Life: <img class='icon' src='img/iconMulticellular.png'><span class='purple'> phanerozoic </span> ("+system.lifeLocation+")",div,"p",true)
+                    addline("<img class='icon whiteicon' src='img/iconLife.png'> Life: <img class='icon' src='img/iconMulticellular.png'><span class='purple'> phanerozoic </span> ("+system.lifeLocation+")",divMain,"p",true)
                 }
             }
             if(system.civ){
-                addline("<img class='icon whiteicon' src='img/iconCivilization.png'><span class='purple'> Is a homeworld </span> ",div,"p",true)
+                addline("<img class='icon whiteicon' src='img/iconCivilization.png'><span class='purple'> Is a homeworld </span> ",divMain,"p",true)
             }
         }
             
 
-            
-            
-            if(system.moons.length >= 0){
+            var divc;
+            var div2;
+            if(system.moons.length > 0){
+                divc=document.createElement("div");
+            div.appendChild(divc);
+            divc.classList.add("systemsub");
                 for(let z1 = 0; z1 < system.moons.length; z1++){
                 var div2 = document.createElement("div");
             div2.classList.add("system2");
-            div.appendChild(div2)
+            divc.appendChild(div2)
                 parseObjectData(sortByDistance(system.moons)[z1],div2);
             }
+            }else{
+                
+                divc=document.createElement("div");
+            div.appendChild(divc);
+            divc.classList.add("systemsub");
+           
+            var div2 = document.createElement("div");
+           
+            div2.classList.add("system2");
+            div2.classList.add("nosat");
+            divc.appendChild(div2);
+            addline("No satellites",div2,"p",true);
+           
             }
 
         }
