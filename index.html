@@ -745,6 +745,17 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+#jsonarea {
+    font-family: monospace;
+}
+
+.planetdesc {
+    box-shadow: none !important;
+    min-height: auto !important;
+}
+
+
+
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
@@ -789,7 +800,7 @@ body {
         <body>
             <div class="navbar">
             <img class="titleimg" src="img/titleimg3.png">
-            <h1> v0.5011 Fornax</h1>
+            <h1> v0.5021 Andromeda</h1>
             <hr>
             <h3 class="patchnotes">System Generation</h3>
         
@@ -848,6 +859,13 @@ body {
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
          
                 <h1 class="patchnotes"> PATCHNOTES</h1>
+                <h3 class="patchnotes">release 0.5021 | Andromeda </h3>
+                <p class="patchnotes">- the json field now supports tab indents, and uses a monospaced font</p>
+                <p class="patchnotes">- densities have been overhauled with a new density calculation system</p>
+                <p class="patchnotes">- ended up breaking gas giants a little (saturn can't have its correct mass and radius now, in particular)</p>
+                <p class="patchnotes">- fixed a (completely unrelated) bug regarding gas giants and habitable planets</p>
+                <p class="patchnotes">- ah well</p>
+                <p class="patchnotes">- added the goofy planet descriptions from walkersysgen</p>
                 <h3 class="patchnotes">release 0.5011 | Fornax</h3>
                 <p class="patchnotes">- hotfix: fixed moon daycycles not being set correctly</p>
                 <p class="patchnotes">- made geologic activity now a lot more detailed; there are now 3 different types: volcanic, ultra-volcanic, and tectonic. all planets generated prior to this will have "none" or "volcanic".</p>
@@ -918,12 +936,17 @@ body {
                 <p class="patchnotes">Probably not. It's not on the roadmap currently, at least.</p>
                 <h3 class="patchnotes">What's an AU☉?</h3>
                 <p class="patchnotes">A measurement of received stellar energy that scales proportionally to the distance from the star. In short, it's how far Earth would need to be from the star to receive the same amount of energy it does from the Sun IRL.</p>
+                <h3 class="patchnotes">But from 0.95 AU☉ inwards, planets won't be habitable because-</h3>
+                <p class="patchnotes">I prioritize an actual simulation of runaway greenhouse effects over following random Artifexian-esque rules.</p>
                 <h3 class="patchnotes">What's a seed?</h3>
         <p class="patchnotes">A seed is the base number the app uses to generate a system. The same seed always gives the same generated system, assuming the chance for life and whether to skip non-habitable systems are set the same.
-            For example, the seed 69420 on v0.4021, if "force habitable planet" is set and the value 0.69 is used for the chance of life appearing on a habitable planet, yields a system with a civ homeworld.
+            For example, the seed 159764194209362 on v0.5021, with default settings, yields a system with a civ homeworld.
         </p>
         <h3 class="patchnotes">Why aren't there any planets with oxygen?</h3>
         <p class="patchnotes">The atmosphere composition entry only lists the gas that makes up the majority of the atmosphere. Oxygen can be inferred based on the presence of Phanerozoic life. However, I don't really see the significance of a planet's atmosphere having oxygen.</p>
+        <h3 class="patchnotes">Why are all the planets described as [HABITABLE]?</h3>
+        <p class="patchnotes">Because they're habitable. <br> <br> Okay so the joke is that I'm poking fun at a lot of other generators (or even pop-culture perception of planets in general) which seem to treat some vague notion of "habitability" as a defining characteristic of a planet. If you want actual habitable planets, check "Force habitable planet" in the generator options.</p>
+
             </div>
             <p></p>
         
@@ -933,13 +956,13 @@ body {
                 <button onClick="toggleJSONEditor();" class="genbutton">Open JSON editor</button>
                 <div style="display:none;" id="jsoneditor">
                     <p> Warning: Hitting "Generate" OVERWRITES this text field! </p>
-                    <textarea type="text" class="genbutton3" onkeyup="updateSystemAlt();" placeholder="{
+                    <textarea type="text" class="genbutton3" id="jsonarea" onkeyup="updateSystemAlt();" placeholder="{
         'isStar': true,
-        'isPlanet': false, ..." id="jsoninput"></textarea>
+        'isPlanet': false, ..." ></textarea>
                     <div>
                         <button onClick="updateSystem();" class="genbutton" style="width:350px; display:inline">Update system</button>
                         <button onClick="
-                        saveTextAsFile(document.getElementById('jsoninput').value,Math.floor(Date.now()/1000)+'-system.solar');
+                        saveTextAsFile(document.getElementById('jsonarea').value,Math.floor(Date.now()/1000)+'-system.solar');
                         
                         " class="genbutton" style="width:350px; display:inline">Download SOLAR file</button>
                         <input type="button" id="loadFile" class="genbutton" style="width:350px; display:inline; text-align:center; text-wrap:wrap;" value="Choose SOLAR file" onclick="document.getElementById('file').click();" />
@@ -1178,8 +1201,8 @@ Promise.allSettled(promises2).then(console.log("All images loaded!"));
 var densities = {};
 densities.metal = 8;
 densities.rock = 2.7;
-densities.ice = 1;
-densities.gas = 1;
+densities.ice = 0.9;
+densities.gas = 0.5;
 
 class Planet{
     constructor(star,parentbody,distance=1,distanceFromParent=1,index=1,mass=1,moons=[],AUSun=1,metal=0.5,rock=0.5,ice=0,gas=0){
@@ -1213,7 +1236,7 @@ class Planet{
     densities.metal*this.metal + 
     densities.rock*this.rock + 
     densities.ice*this.ice +
-    densities.gas*this.gas)
+    densities.gas*this.gas)*(1+((this.mass**0.1666)/2))
         }
         this.radius = function(){
             return Math.cbrt(this.mass/(this.density()/5.5))*6371
@@ -1253,12 +1276,12 @@ window.mobileCheck = function() {
   (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
   return check;
 };
-var t = document.getElementById("jsoninput");
+var t = document.getElementById("jsonarea");
 async function loadSystem(){
     console.log("Began loading system!")
     const selectedFile = document.getElementById("file").files[0];
     const systext = await selectedFile.text();
-    document.getElementById("jsoninput").value = systext;
+    document.getElementById("jsonarea").value = systext;
     console.log("Finished loading system!")
     updateSystem();
 }
@@ -1357,7 +1380,7 @@ function density(planet_in){
     densities.metal*planet_in.metal + 
     densities.rock*planet_in.rock + 
     densities.ice*planet_in.ice +
-    densities.gas*planet_in.gas)
+    densities.gas*planet_in.gas)*Math.min(Math.max(1,(1+planet_in.mass*0.5)),1+((planet_in.mass**0.2)/2));
 }
 
 function baseTemperature(planet_in){
@@ -1417,11 +1440,28 @@ function lumaToMass(luma_in){ // convert luma to mass for a...
     }
 }
 function checkForTerrestrialPlanet(system){
-    for(let ii in system.planets){
+    if(system.planets){
+        for(let ii in system.planets){
+
         if(system.planets[ii].liquid == 0){
             return true;
         }
+        if(system.planets[0]){
+            if(checkForTerrestrialPlanet(system.planets[ii])){
+                return true;
+            }
+        }
+
     }
+    }
+    if(system.moons){
+        for(let ii in system.moons){
+        if(system.moons[ii].liquid == 0){
+            return true;
+        }
+    }
+    }
+
     return false;
 }
 var systypeInput = 0;
@@ -1491,21 +1531,25 @@ var starMax = Math.min(Math.max(document.getElementById("starMax").value,0.085),
     var ij = 0;
     var div = document.createElement("div");
     div.classList.add("system");
+    var kl = 0;
     if(document.getElementById("forceTerrestrialPlanet").checked){
         var kseed = seed;
         var test_star = generateStar(starMin,Math.max(starMax,starMin*1.05),true);
         var planets = sortByDistance(test_star.planets);
-        while(checkForTerrestrialPlanet(test_star)==false && ij <= 50){
-            ij++;
+        
+        while(checkForTerrestrialPlanet(test_star)==false && kl <= 5000){
+            kl++;
+            
             var kseed = seed;
             var test_star = generateStar(starMin,Math.max(starMax,starMin*1.05),true);
             var planets = sortByDistance(test_star.planets);
         }
+        
         if(checkForTerrestrialPlanet(test_star)==false){
             var div2 = document.getElementsByClassName("systemcontainer")[0];
     div2.innerHTML = " "
     addline("Could not generate valid system! Try again",div,"p",false);
-    console.log("Could not generate system with terrestrial planet, skipped 50 systems")
+    console.log("Could not generate system with terrestrial planet, skipped 5000 systems")
     div2.appendChild(div);
     return;
         }
@@ -1513,14 +1557,14 @@ var starMax = Math.min(Math.max(document.getElementById("starMax").value,0.085),
     var test_star = generateStar(starMin,Math.max(starMax,starMin*1.05),true);
     var planets = sortByDistance(test_star.planets);
     }
-    console.log("System generated with seed "+kseed+", skipped "+ij+" systems")
+    console.log("System generated with seed "+kseed+", skipped "+kl+" systems")
     
     var div2 = document.getElementsByClassName("systemcontainer")[0];
     div2.innerHTML = " "
     div2.appendChild(drawSystem(div,test_star,false));
     systemDataToHTML(test_star,div);
     div2.appendChild(div);
-    document.getElementById("jsoninput").value = (JSON.stringify(JSON.decycle(test_star, undefined),null, "\t"));
+    document.getElementById("jsonarea").value = (JSON.stringify(JSON.decycle(test_star, undefined),null, "\t"));
     publicStar = test_star;
     }
 }
@@ -1541,12 +1585,16 @@ inter_x -= FFS(inter_temp,in_1)/OMFG(inter_temp,in_1);
 return inter_x;
 }
 function planetTemp(planet){
+    try {
     if(planet.greenhouseEffect != undefined){
         return baseTemperature(planet)*planet.greenhouseEffect;
     } else {
         return baseTemperature(planet);
     }
+} catch {
+    return NaN;
 
+}
 }
 function lowTemp(planet){
     if(planet.greenhouseEffect != undefined){
@@ -1602,7 +1650,7 @@ function atmosphere(planet){
     planet.oxygen=0;
     planet.liquidCoverage=0;
     planet.liquid=-1;
-    if(planet.metal*planet.mass>planet.star.age/(100000)){
+    if(planet.metal*planet.mass>planet.star.age/(100000)||planet.gas){
         if(prng()<=planet.mass*4){
             planet.magneticField = true;
         }
@@ -1613,8 +1661,8 @@ function atmosphere(planet){
     if(baseTemperature(planet) < 50) { // if the planet is too cold, none of these gases can form an atmosphere
         return;
     } 
-    if(prng()<=planet.mass){
-        if(planet.magneticField || (planet.parentbody.magneticField && AUToKm(distanceFromParent(planet)) <= radius(planet.parentbody)*8) || planet.AUSun >= 3){
+    if(prng()+0.01<=planet.mass){
+        if(planet.magneticField || (planet.parentbody.magneticField) || planet.AUSun >= 3){
             planet.atmobasegas = "nitrogen"; // assume the atmosphere is nitrogen (as is the case with Pluto, Earth, and Titan);
             planet.atmothickness = (prng()**4)*min(planet.mass,3)*16; // distribution of atmospheres
             planet.greenhouseEffect = (prng()*0.25)*Math.min(1,planet.atmothickness)+0.05*Math.min(8,planet.atmothickness)+1
@@ -1874,16 +1922,16 @@ function generatePlanet(massLower=0.0001,massUpper=1000,AUSun,parentbody,star,vD
     if(type==2){ // ice giant?
             planetOutput.ice = (prng()/3)+0.5; // planet is mostly ice...
             planetOutput.gas = 1-planetOutput.ice; // and some gas
-            planetOutput.ice *= (prng()/6)+0.65; // make room for rock
-            planetOutput.gas *= (prng()/6)+0.65; 
+            planetOutput.ice *= (prng()/6)+0.75; // make room for rock
+            planetOutput.gas *= (prng()/6)+0.75; 
             planetOutput.rock = (1-planetOutput.ice)-planetOutput.gas // add rocky core
     } else if(type==1) { // gas giant?
-            planetOutput.gas = (prng()/6)+0.8; // gaseous envelope
+            planetOutput.gas = (prng()/40)+0.95; // gaseous envelope
             planetOutput.rock = 1-planetOutput.gas; // and rocky core
     } else if(type==0) { // rocky planet?
-            planetOutput.metal = prng()*(5/6); // metallic core
+            planetOutput.metal = (prng()**4+prng()*2/6)*(3/6); // metallic core
             planetOutput.rock = 1-planetOutput.metal; // remaining silicate
-            var iceProportion = (prng()*0.5)+0.01
+            var iceProportion = (prng()*0.7)+0.01
             if(prng()<=(AUSun-2.5)/4) // ice planets are more likely the further out you are 
             {
                 planetOutput.metal *= 1-iceProportion; // make room for ice
@@ -1981,11 +2029,12 @@ if(planetOutput.parentbody.isStar){
 function FirstPlanet(star){
     
     if(lumaToMass(star.luma) <= 0.5){ // case 1: star is not large enough (<0.2 mass) to form a large planet; skip this step {depends on star}
-
+        console.log("( ◕▿◕ )");
     }else{ // case 2: star is large enough to form a large planet (>150 Earth masses), but no such planet forms {33%}
         
         if((prng()<=(Math.min(lumaToMass(star.luma),1)-0.33) && systypeInput == 0) || systypeInput >= 2){  // case 3: star is large enough to form a large planet (>150 Earth masses), planet forms: {67%}
             if((prng()>=0.50 && systypeInput == 0) || systypeInput == 2){ // case 3c: no migration: {50%}
+                console.log("¯\\_(ツ)_/¯")
                 star.innerSystem = 0; // - inner system flag is set to 0, indicating no migration, and no orbital zones are marked invalid
                 var kp = generatePlanet(
                         150,
@@ -2005,7 +2054,7 @@ function FirstPlanet(star){
                     
                     
             } else if((prng()>=0.50 && systypeInput == 0) || systypeInput == 3){   // case 3b: "hot jupiter": {25%}
-        
+            console.log("( ͡° ͜ʖ ͡°)")
                 if(/*prng()<=star.age/8000*/false){ // hot jupiter is destroyed, 
                     star.innerSystem = 3;   // inner system flags 1 and 3 have the same behavior, but 3 indicates that the planet with index 0 is not the main planet (as no main planet exists)
                    
@@ -2016,7 +2065,7 @@ function FirstPlanet(star){
                     var kp = generatePlanet(
                         150,
                         1000,
-                        (prng())+0.1,
+                        (prng()*1)+0.1,
                         star,
                         star,
                         null,
@@ -2029,7 +2078,7 @@ function FirstPlanet(star){
                     }
                 }
             } else { // case 3a: "grand tack": {25%}
-            
+            console.log("(╯°□°)╯︵ ┻━┻")
                 star.innerSystem = 2;  // - inner system flag is set to 2, indicating a grand tack, and meaning zones inwards of 6 AUSun are marked invalid for medium/large planets (>2 Earth masses), and zones between 2 and 6 AUSun are marked invalid for small planets, but not unterplanets
                 var kp = generatePlanet(
                     150,
@@ -2059,6 +2108,8 @@ function FirstPlanet(star){
                         1
                     ))
                 }
+            } else {
+                console.log("((╬◣﹏◢)");
             }
         }
     }
@@ -2161,6 +2212,21 @@ function FirstPlanet(star){
         return;
         
     }
+    document.getElementById('jsonarea').addEventListener('keydown', function(e) {
+  if (e.key == 'Tab') {
+    e.preventDefault();
+    var start = this.selectionStart;
+    var end = this.selectionEnd;
+
+    // set textarea value to: text before caret + tab + text after caret
+    this.value = this.value.substring(0, start) +
+      "\t" + this.value.substring(end);
+
+    // put caret at right position again
+    this.selectionStart =
+      this.selectionEnd = start + 1;
+  }
+});
     function sortByDistSub(left, right) {
   let sortedArr = [] // the sorted items will go here
   while (left.length && right.length) {
@@ -2220,6 +2286,7 @@ function FirstPlanet(star){
         return;
         
     }
+
     function gasGiant(star){
         AUSun = determinePlanetPlacement(star,0,3,Math.min(50*sqrt(lumaToMass(star.luma)),66));
         if(AUSun != undefined){
@@ -2425,6 +2492,7 @@ function FirstPlanet(star){
         return au*149600000
     }
     function placePlanetsResonant(star){
+        console.log("♬♫♪◖(● o ●)◗♪♫♬")
         kplan = Math.min(document.getElementById("planettries").value,10)*prng()*1.5;
         var m = (prng())+0.4
         
@@ -2775,7 +2843,7 @@ function FirstPlanet(star){
         try {
         var div = document.createElement("div");
     div.classList.add("system");
-    var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsoninput").value))
+    var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsonarea").value))
     
     var div2 = document.getElementsByClassName("systemcontainer")[0];
     div2.innerHTML = " "
@@ -2801,7 +2869,7 @@ function FirstPlanet(star){
         try {
         var div = document.createElement("div");
     div.classList.add("system");
-    var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsoninput").value))
+    var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsonarea").value))
     
     var div2 = document.getElementsByClassName("systemcontainer")[0];
     div2.innerHTML = " "
@@ -2860,6 +2928,60 @@ function FirstPlanet(star){
 
 
         if(system.isStar){
+            var desc = "STATUS: HABITABLE (according to like, half of sci-fi books for some reason)</p> <hr> <p>";
+            var l0 = lumaToMass(system.luma);
+            if(l0<0.4){
+                desc = desc + "DETAILS: A cool red dwarf star, shining faintly. "
+            } else if (l0<0.8){
+                 desc = desc + "DETAILS: A cool orange dwarf star, shining dimly. "
+            } else if (l0<1.04){
+                desc = desc + "DETAILS: A warm yellow dwarf star, shining brightly. "
+            } else if (l0<1.4){
+                desc = desc + "DETAILS: A warm white main-sequence star, shining very brightly. "
+            } else {
+                desc = desc + "DETAILS: A hot blue main-sequence star, shining extremely brightly. "
+            };
+            if(system.planets[0]){
+                if(system.planets[1]){
+                    desc = desc + "Multiple other objects orbit this star."
+                } else {
+                    desc = desc + "Another object orbits this star."
+                }
+            } else {
+                desc = desc + "There is nothing else."
+            }
+
+            
+            
+            addline(`
+            <div class='system2 planetdesc'>
+                <p>
+                    `+desc+`
+                </p>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                `
+                
+                
+                
+                
+                
+                
+                ,divMain,"div",true);
+
+
+
+
+
+
+
             div.classList.add("systemStarTall");
             if(system.name == undefined){
                 addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: Salibe",divMain,"h3",true);
@@ -2925,6 +3047,232 @@ function FirstPlanet(star){
             }
             
         } else if (system.isPlanet){
+            if(system.liquid==1 && system.liquidCoverage){
+                var desc = "STATUS: HABITABLE (for something, at least)</p> <hr> <p>";
+            } else
+            if(system.ice && system.gas){
+                var desc = "STATUS: HABITABLE (if there's water, there's a way!)</p> <hr> <p>";
+            } else
+            if(system.gas){
+                var desc = "STATUS: HABITABLE (there's probably something down there)</p> <hr> <p>";
+            } else
+            if(system.ice && system.geoactive){
+                var desc = "STATUS: HABITABLE (but it is a little dark)</p> <hr> <p>";
+            } else
+            if(system.greenhouseEffect >= 2){
+                var desc = "STATUS: HABITABLE (for statistical purposes)</p> <hr> <p>";
+            } else
+            if(system.liquid==0 && system.liquidCoverage){
+                if(system.life >= 2){
+                    if(system.tidalLock == 1){
+                        var desc = "STATUS: HABITABLE (yes, the entire planet)</p> <hr> <p>";
+                    } else {
+                        var desc = "STATUS: HABITABLE (but a little boring)</p> <hr> <p>";
+                    }
+                    
+                } else {
+                    var desc = "STATUS: HABITABLE (who needs oxygen anyway?)</p> <hr> <p>";
+                }
+                
+            } else {
+                var desc = "STATUS: HABITABLE (if you're brave enough)</p> <hr> <p>";
+            }
+            
+            if(system.gas){
+                if(system.ice){
+                    desc = desc + "A brilliant blue (or perhaps generic gray) ice giant, a planet made up almost entirely of an atmosphere of hydrogen and ices like water. A supercritical ocean lies deep beneath the visible outer atmosphere. "
+                } else {
+                    desc = desc + "A gas giant, with raging storms and churning clouds, a planet made up almost entirely of an atmosphere of hydrogen and helium (the same stuff that makes up stars). A supercritical ocean lies deep beneath the visible outer atmosphere. "
+                }
+            } else {
+                if(system.ice){
+                    desc = desc + "A world whose entire outer surface is made up of ice. The planet is so cold that ice behaves essentially like rocks. "
+                    if(system.geoactive >= 3){
+                        desc = desc + "Over millions of years, tectonic plates slide across the mantle, giving rise to deep trenches and mighty mountain ranges. "
+                    } else if(system.geoactive == 2){
+                        desc = desc + "Deep below the surface, there is an ocean of liquid water, and frequent cryovolcanic eruptions regularly reshape the surface. "
+                    } else if(system.geoactive == 1){
+                        desc = desc + "Deep below the surface, there is an ocean of liquid water, and geologic activity provides an energy source for any life that might evolve down there. "
+                    } else {
+                        desc = desc + "The planet's interior is solid ice down to a layer of rock, and the planet is also covered in asteroid impact craters. "
+                    }
+                }else{
+                if(system.metal > 0.35){
+                    desc = desc + "A rocky world, very rich in metals such as iron and nickel. The planet has a huge metallic core. "
+                }else if(system.metal > 0.05){
+                    desc = desc + "A rocky world with a moderate amount of metal in it. The planet has a large metallic core. "
+                }else{
+                    desc = desc + "A world predominantly composed of silicate rocks, as opposed to metal. "
+                }
+                if(system.geoactive >= 3){
+                        desc = desc + "Over millions of years, tectonic plates slide across the mantle, giving rise to deep trenches and mighty mountain ranges. "
+                    } else if(system.geoactive == 2){
+                        desc = desc + "The planet is subject to extreme volcanism, which often completely reshapes the surface. "
+                        if(system.mass >= 0.1){
+                            desc = desc + "Supervolcanic eruptions are common here. "
+                        }
+                    } else if(system.geoactive == 1){
+                        desc = desc + "The planet's hot interior contributes to geologic activity and regular volcanism, which renews the surface of the planet. "
+                    } else {
+                        desc = desc + "The planet's surface is covered in craters. A lack of geologic activity preserves rocks from when the planet first formed. "
+                    }
+            }
+            }
+            if(system.rings){
+                    desc = desc + "A shimmering ring system circles the planet, perhaps a remnant of a small moon or stray comet or asteroid. "
+            }
+            if(system.liquidCoverage > 0){
+                if(system.liquidCoverage >= 1){
+                    desc = desc + "The planet is entirely covered in an ocean of"
+                }else
+                if(system.liquidCoverage >= 0.95){
+                    desc = desc + "The planet is mostly covered, except for a few small islands, in an ocean of"
+                }else
+                if(system.liquidCoverage >= 0.3){
+                    desc = desc + "The planet is covered with large oceans of"
+                }else
+                if(system.liquidCoverage >= 0.1){
+                    desc = desc + "The planet has large seas of"
+                }else
+                {
+                    desc = desc + "The planet has lakes of"
+                }
+                if(system.liquid==1){
+                    desc = desc + " liquid methane (methanum)"
+                } else {
+                    desc = desc + " liquid water"
+                }
+
+                if(system.liquidCoverage >= 0.3 && system.liquidCoverage <= 0.95 && system.geoactive == 3){
+                    desc = desc + ", dividing up the planet into distinct continental and oceanic regions."
+                } else {
+                    desc = desc + ". "
+                }
+            }
+            if(system.atmothickness){
+                desc = desc + "The planet has a"
+                if(system.atmothickness >= 50){
+                    desc = desc + " very thick atmosphere made of mostly "
+                }else
+                if(system.atmothickness >= 10){
+                    desc = desc + " thick atmosphere made of mostly "
+}else
+if(system.atmothickness >= 2){
+    desc = desc + " moderate atmosphere made of mostly "
+}else
+if(system.atmothickness >= 0.1){
+    desc = desc + " thin atmosphere made of mostly "
+}else  
+{
+    desc = desc + " very thin atmosphere made of mostly "
+}
+
+                if(system.atmobasegas=="carbondioxide"){
+                    desc = desc + "carbon dioxide. This produces a "
+                } else {
+                    desc = desc + "nitrogen. This produces a "
+                }
+                if(system.greenhouseEffect > 2){
+                    desc = desc + "very strong greenhouse effect, heating up the planet to "
+                }else
+                if(system.greenhouseEffect > 1.25){
+                    desc = desc + "strong greenhouse effect, heating up the planet to "
+                }else
+                if(system.greenhouseEffect > 1.07){
+                    desc = desc + "moderate greenhouse effect, heating up the planet to "
+                }else{
+                    desc = desc + "weak greenhouse effect, heating up the planet to "
+                }
+                desc = desc + (planetTemp(system)).toFixed(1)
+                desc = desc + " Kelvin (" + (planetTemp(system)-273).toFixed(1) + " Celsius). "
+
+                if(system.life == 2){
+                    desc = desc + "There's also oxygen in the atmosphere. I don't know why that's important, I just thought I'd mention it. "
+                }
+
+                if(system.tidalLock == 1 && system.parentbody.isStar){
+                    desc = desc + "One side of the planet always faces the star, and gets up to " + (highTemp(system)-273).toFixed(1) + " degrees Celsius, while the night side gets as cold as " + (lowTemp(system)-273).toFixed(1) + " degrees. "
+                }
+            }else {
+                if(!system.gas){
+                     desc = desc + "The planet is about " + (planetTemp(system)).toFixed(1) + " Kelvin or " + (planetTemp(system)-273).toFixed(1) + " degrees Celsius, but the lack of atmosphere means that temperatures vary widely, between " + (lowTemp(system)-273).toFixed(1) + " and " + (highTemp(system)-273).toFixed(1) + " degrees. "
+                }else {
+                     desc = desc + "The planet is about " + (planetTemp(system)).toFixed(1) + " Kelvin or " + (planetTemp(system)-273).toFixed(1) + " degrees Celsius. "
+                }
+               
+            }
+            if(system.life >= 1){
+                if(system.life == 1){
+                    desc = desc + "This planet has unicellular life in its oceans. "
+                }else{
+                    if(system.lifeLocation == "surface"){
+                        desc = desc + "This planet has complex life on its surface. "
+                    }else {
+                        desc = desc + "This planet has complex life underneath its surface. "
+                    }
+                }
+                if(system.civ){
+                    desc = desc + "<b>There is a civilization here.</b> "
+                }
+            }
+            if(system.moons.length > 0){
+                if(system.moons.length > 1){
+                    desc = desc + "This planet has multiple moons orbiting it."
+                } else {
+                    desc = desc + "This planet has 1 moon orbiting it."
+                }
+            } else {
+                desc = desc + "There is nothing else."
+            }
+
+
+            
+            
+            
+            addline(`
+            <div class='system2 planetdesc'>
+                <p>
+                    `+desc+`
+                </p>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                `
+                
+                
+                
+                
+                
+                
+                ,divMain,"div",true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if(system.parentbody.isStar && system.mass >= 0.01){
                 if(system.name == undefined){
                 addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: Salibe",divMain,"h3",true);
