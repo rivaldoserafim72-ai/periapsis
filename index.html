@@ -800,7 +800,7 @@ body {
         <body>
             <div class="navbar">
             <img class="titleimg" src="img/titleimg3.png">
-            <h1> v0.5021 Andromeda</h1>
+            <h1> v0.5022 Andromeda</h1>
             <hr>
             <h3 class="patchnotes">System Generation</h3>
         
@@ -859,6 +859,10 @@ body {
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
          
                 <h1 class="patchnotes"> PATCHNOTES</h1>
+                <h3 class="patchnotes">release 0.5022</h3>
+                <p class="patchnotes">- fixed the saturn radius bug</p>
+                <p class="patchnotes">- Salibe</p>
+                <p class="patchnotes">- the generator now puts cute faces in the dev console</p>
                 <h3 class="patchnotes">release 0.5021 | Andromeda </h3>
                 <p class="patchnotes">- the json field now supports tab indents, and uses a monospaced font</p>
                 <p class="patchnotes">- densities have been overhauled with a new density calculation system</p>
@@ -1202,7 +1206,7 @@ var densities = {};
 densities.metal = 8;
 densities.rock = 2.7;
 densities.ice = 0.9;
-densities.gas = 0.5;
+densities.gas = 0.2;
 
 class Planet{
     constructor(star,parentbody,distance=1,distanceFromParent=1,index=1,mass=1,moons=[],AUSun=1,metal=0.5,rock=0.5,ice=0,gas=0){
@@ -1232,11 +1236,20 @@ class Planet{
         
         this.liquidCoverage = 0;
         this.density = function(){
-            return (
+            if(this.mass <= 64){
+                return ((
     densities.metal*this.metal + 
     densities.rock*this.rock + 
     densities.ice*this.ice +
-    densities.gas*this.gas)*(1+((this.mass**0.1666)/2))
+    densities.gas*this.gas)*(1+((this.mass**0.1666)/2)))
+            } else {
+                return ((
+    densities.metal*this.metal + 
+    densities.rock*this.rock + 
+    densities.ice*this.ice +
+    densities.gas*this.gas)*(1+((this.mass**0.3333)/4)))
+            }
+
         }
         this.radius = function(){
             return Math.cbrt(this.mass/(this.density()/5.5))*6371
@@ -1376,11 +1389,19 @@ function mass(star){
 }
 
 function density(planet_in){
-    return (
+
+        return (
     densities.metal*planet_in.metal + 
     densities.rock*planet_in.rock + 
     densities.ice*planet_in.ice +
-    densities.gas*planet_in.gas)*Math.min(Math.max(1,(1+planet_in.mass*0.5)),1+((planet_in.mass**0.2)/2));
+    densities.gas*planet_in.gas)*Math.min(
+        Math.max(1,(1+planet_in.mass*0.5)),
+        Math.max(1+((planet_in.mass**0.2)/2),1+((planet_in.mass**0.8)/30)));
+    
+    
+    
+
+
 }
 
 function baseTemperature(planet_in){
@@ -2855,11 +2876,36 @@ function FirstPlanet(star){
      div2.innerHTML = " "
     var div = document.createElement("div");
     div.classList.add("system");
-    if(error.stack){
+    if(Math.random()>=0.95){
+        if(error.stack){
+        div.innerHTML = "<p>ULTIMATE BEPIS ERROR: Oh Oh, I'm a goofy goober!</p> <hr> <p>Here's where I somehow managed to f🪐ck up completely: <span class='red'>"+error.stack+"</span>, lmao lol</p>"
+    }else{
+        div.innerHTML = "<p>ULTIMATE BEPIS ERROR: Oh Oh, I'm a goofy goober!</p> <hr> <p>Here's where I somehow managed to f🪐ck up completely: <span class='red'>"+error+"</span>, lmao lol</p>"
+    }
+    } else {
+        if(Math.random()>=0.9473684){
+        if(error.stack){
+        div.innerHTML = "<p>pakala a! ilo ni li pali ala e mun. nimi JSON li ken pakala la, sina o lukin e nimi JSON sina. nimi JSON li pona la, ilo li pakala. o toki e ni tawa mi! </p> <hr> <p> pakala: <span class='red'>"+error.stack+"</span></p>"
+    }else{
+        div.innerHTML = "<p>pakala a! ilo ni li pali ala e mun. nimi JSON li ken pakala la, sina o lukin e nimi JSON sina. nimi JSON li pona la, ilo li pakala. o toki e ni tawa mi! </p> <hr> <p> pakala: <span class='red'>"+error+"</span></p>"
+    }
+    } else {
+        if(Math.random()>=0.9444444){
+        if(error.stack){
+        div.innerHTML = "<p>PAKALA KIJETESANTAKALU SULI: yupekosi a! mi nasa epiku mute. </p> <hr> <p> lon ni la, mi somehow managed to f🪐ck up e pali completely: <span class='red'>"+error.stack+"</span>, a a a</p>"
+    }else{
+        div.innerHTML = "<p>PAKALA KIJETESANTAKALU SULI: yupekosi a! mi nasa epiku mute. </p> <hr> <p> lon ni la, mi somehow managed to f🪐ck up e pali completely: <span class='red'>"+error+"</span>, a a a</p>"
+    }
+    } else {
+        if(error.stack){
         div.innerHTML = "<p>Whoopsie! Something didn't work. Have you checked that your JSON is correct? If so, then it might be an issue with the app - notify me!</p> <hr> <p>Error: <span class='red'>"+error.stack+"</span></p>"
     }else{
         div.innerHTML = "<p>Whoopsie! Something didn't work. Have you checked that your JSON is correct? If so, then it might be an issue with the app - notify me!</p> <hr> <p>Error: <span class='red'>"+error+"</span></p>"
     }
+    }
+    }
+    }
+
     
     div2.appendChild(div);
     console.warn(error);
