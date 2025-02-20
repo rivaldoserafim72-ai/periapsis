@@ -797,10 +797,10 @@ body {
   </head>
   <body>
     <main>
-        <body>
+        <body onload="init()">
             <div class="navbar">
             <img class="titleimg" src="img/titleimg3.png">
-            <h1> v0.5022 Andromeda</h1>
+            <h1> v0.5031 Pictor</h1>
             <hr>
             <h3 class="patchnotes">System Generation</h3>
         
@@ -859,6 +859,10 @@ body {
             <div class="infocontainer" style="overflow-y:scroll; height:500px;">
          
                 <h1 class="patchnotes"> PATCHNOTES</h1>
+                <h3 class="patchnotes">release 0.5031 Pictor</h3>
+                <p class="patchnotes">- generator loads the Solar System upon opening the window</p>
+                <p class="patchnotes">- Moved the planet description below its name</p>
+                <p class="patchnotes">- attempted to make the current working system save to a cookie</p>
                 <h3 class="patchnotes">release 0.5022</h3>
                 <p class="patchnotes">- fixed the saturn radius bug</p>
                 <p class="patchnotes">- Salibe</p>
@@ -1082,7 +1086,428 @@ function generatePlanetName() {
     }
     return tmp3;
 }
+var baseSystem = `
+ {
+	"isStar": true,
+	"isPlanet": false,
+	"luma": 1,
+	"age": 4600,
+	"isPrimary": true,
+	"name": "Sol",
+	"planets": [
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 317,
+			"AUSun": 5.2,
+			"metal": 0,
+			"rock": 0.01,
+			"ice": 0,
+			"gas": 0.99,
+			"moons": [
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\\"planets\\"][0]"
+					},
+					"mass": 0.015,
+					"AUSun": 5.2,
+					"metal": 0.1,
+					"rock": 0.9,
+					"ice": 0,
+					"gas": 0,
+					"distanceFromParent": 0.0028,
+					"geoactive":2,
+					"greenhouseEffect":1,
+					"moons": [
+					],
+					"name": "Io",
+					"dayCycle":1.75,
+					"tidalLock":1
+				},
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\\"planets\\"][0]"
+					},
+					"mass": 0.0083,
+					"AUSun": 5.2,
+					"metal": 0.05,
+					"rock": 0.9,
+					"ice": 0.05,
+					"gas": 0,
+					"distanceFromParent": 0.0044,
+					"geoactive":1,
+					"greenhouseEffect":1,
+					"moons": [
+					],
+					"name": "Europa",
+					"dayCycle":3.45,
+					"tidalLock":1
+				},
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\\"planets\\"][0]"
+					},
+					"mass": 0.025,
+					"AUSun": 5.2,
+					"metal": 0.05,
+					"rock": 0.3,
+					"ice": 0.65,
+					"gas": 0,
+					"distanceFromParent": 0.00715,
+					"geoactive":1,
+					"greenhouseEffect":1,
+					"moons": [
+					],
+					"name": "Ganymede",
+					"dayCycle":7.15,
+					"tidalLock":1
+				},
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\\"planets\\"][0]"
+					},
+					"mass": 0.018,
+					"AUSun": 5.2,
+					"metal": 0.05,
+					"rock": 0.3,
+					"ice": 0.65,
+					"gas": 0,
+					"distanceFromParent": 0.0126,
+					"geoactive":0,
+					"greenhouseEffect":1,
+					"moons": [
+					],
+					"name": "Callisto",
+					"dayCycle":16.73,
+					"tidalLock":1
+				}
 
+
+
+
+
+
+			],
+			"name": "Jupiter",
+			"dayCycle":0.4,
+			"tidalLock":0
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 95,
+			"AUSun": 9.5,
+			"dayCycle":0.45,
+			"tidalLock":0,
+			"metal": 0,
+			"rock": 0.01,
+			"ice": 0,
+			"gas": 0.99,
+			"rings":true,
+			"moons": [
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\\"planets\\"][1]"
+					},
+					"mass": 0.022,
+					"AUSun": 9.5,
+					"metal": 0.05,
+					"rock": 0.3,
+					"ice": 0.65,
+					"gas": 0,
+					"distanceFromParent": 0.008,
+					"geoactive":1,
+					"atmothickness":1.2,
+					"liquid":1,
+					"liquidCoverage":0.02,
+					"greenhouseEffect":1.13,
+					"moons": [
+					],
+					"name": "Titan",
+					"dayCycle":15.46,
+					"tidalLock":1
+				}
+
+
+
+
+			],
+			"name": "Saturn"
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 17,
+			"AUSun": 30,
+			"metal": 0,
+			"rock": 0.05,
+			"ice": 0.7,
+			"gas": 0.25,
+			"moons": [
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\\"planets\\"][2]"
+					},
+					"mass": 0.0035,
+					"AUSun": 30,
+					"metal": 0.05,
+					"rock": 0.5,
+					"ice": 0.45,
+					"gas": 0,
+					"distanceFromParent": 0.00237,
+					"geoactive":1,
+					"greenhouseEffect":1,
+					"moons": [
+					],
+					"name": "Triton",
+					"dayCycle":5.89,
+					"tidalLock":1
+				}
+
+			],
+			"dayCycle":0.7,
+			"tidalLock":0,
+			"name": "Neptune"
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 14.5,
+			"AUSun": 19,
+			"metal": 0,
+			"rock": 0.05,
+			"ice": 0.5,
+			"gas": 0.45,
+			"moons": [],
+			"dayCycle":0.7,
+			"tidalLock":0,
+			"name": "Uranus"
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 1,
+			"AUSun": 1,
+			"metal": 0.2,
+			"name":"Earth",
+			"dayCycle":1,
+			"tidalLock":0,
+			"rock": 0.8,
+			"ice": 0,
+			"gas": 0,
+			"atmothickness": 1,
+			"liquidCoverage":0.7,
+			"liquid":0,
+			"greenhouseEffect":1.13,
+			"geoactive":3,
+			"life":2,
+			"lifeLocation":"surface",
+			"civ":1,
+			"moons": [
+		        	{
+                                        "isPlanet": true,
+		  				      	        "isStar": false,
+					         	        "star": {
+						                 	"$ref": "$"
+		  				               	},
+						                "parentbody": {
+			 			                	"$ref": "$[\\"planets\\"][4]"
+			 				            },
+			            			    "mass": 0.01,
+		         	  			        "AUSun": 4,
+			            			    "metal": 0.05,
+										"dayCycle":27.44,
+										"tidalLock":1,
+		        	        			"rock": 0.95,
+				        				"ice": 0,
+				        				"gas": 0,
+										"greenhouseEffect":1,
+										"name":"Luna",
+				        				"distanceFromParent": 0.00257,
+             	                        "moons": []
+                                }
+			]
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.8,
+			"AUSun": 0.72,
+			"metal": 0.2,
+			"name":"Venus",
+			"dayCycle":243,
+			"tidalLock":0,
+			"rock": 0.8,
+			"ice": 0,
+			"gas": 0,
+			"moons":[],
+			"atmothickness": 1,
+			"atmobasegas":"carbondioxide",
+			"greenhouseEffect":2.5,
+			"geoactive":2
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.11,
+			"AUSun": 1.5,
+			"metal": 0.05,
+			"name":"Mars",
+			"dayCycle":1.02,
+			"tidalLock":0,
+			"rock": 0.95,
+			"ice": 0,
+			"gas": 0,
+			"moons":[],
+			"atmothickness": 0.01,
+			"atmobasegas":"carbondioxide",
+			"greenhouseEffect":1.01,
+			"geoactive":1
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.055,
+			"AUSun": 0.4,
+			"metal": 0.5,
+			"name":"Mercury",
+			"dayCycle":59,
+			"tidalLock":0,
+			"rock": 0.5,
+			"ice": 0,
+			"gas": 0,
+			"moons":[],
+			"atmothickness": 0,
+			"greenhouseEffect":1,
+			"geoactive":0
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.0022,
+			"AUSun": 39.4,
+			"metal": 0.05,
+			"rock": 0.3,
+			"ice": 0.65,
+			"gas": 0,
+			"geoactive":1,
+			"greenhouseEffect":1,
+			"moons": [
+			],
+			"name": "Pluto",
+			"dayCycle":6.4,
+			"tidalLock":0
+		},
+		{
+			"isPlanet": true,
+			"isStar": false,
+			"star": {
+				"$ref": "$"
+			},
+			"parentbody": {
+				"$ref": "$"
+			},
+			"mass": 0.0028,
+			"AUSun": 68,
+			"metal": 0.05,
+			"rock": 0.5,
+			"ice": 0.45,
+			"gas": 0,
+			"geoactive":1,
+			"greenhouseEffect":1,
+			"moons": [
+			],
+			"name": "Eris",
+			"dayCycle":1.1,
+			"tidalLock":0
+		}
+	]
+}
+    `
 var imgsrcs =[
     "img/ATM_carbo.png",
     "img/staricons/typea.png",
@@ -1613,6 +2038,7 @@ function planetTemp(planet){
         return baseTemperature(planet);
     }
 } catch {
+    console.log("AAAAAAH")
     return NaN;
 
 }
@@ -1662,6 +2088,16 @@ function boilingPoint(pressure = 1, liquid = water){
 }
 var ccc = 0;
 var ddd = 0;
+function getCookie(cookieName) {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === cookieName) {
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
+}
 function atmosphere(planet){
     planet.atmobasegas="none";
     planet.liquid="none";
@@ -2307,7 +2743,17 @@ function FirstPlanet(star){
         return;
         
     }
-
+function init(){
+    console.log(getCookie("system"));
+    if(getCookie("system")){
+        document.getElementById("jsonarea").value = getCookie("system");
+    } else {
+        document.getElementById("jsonarea").value = baseSystem;
+    }
+   
+    console.log("Finished loading system!")
+    updateSystem();
+}
     function gasGiant(star){
         AUSun = determinePlanetPlacement(star,0,3,Math.min(50*sqrt(lumaToMass(star.luma)),66));
         if(AUSun != undefined){
@@ -2475,6 +2921,18 @@ function FirstPlanet(star){
     } 
     
     return tot;
+}
+function earthSimilarity(planet){
+    var greenhouse = planet.greenhouseEffect;
+    if(greenhouse == NaN){
+        greenhouse = 1;
+    }
+    var preMass = Math.max(planet.mass,1)/Math.min(planet.mass,1)
+    var preRad = Math.max(radius(planet),6371)/Math.min(radius(planet),6371)
+    var preTemp = Math.max(planetTemp(planet),288)/Math.min(planetTemp(planet),288)
+    var preGreenhouse = Math.max(greenhouse,1.13)/Math.min(greenhouse,1.13)
+    return 1/((preMass*preRad*preTemp*preGreenhouse)**0.25);
+
 }
     function YearToOrbit(year){
         return Math.cbrt(year**2)
@@ -2864,6 +3322,7 @@ function FirstPlanet(star){
         try {
         var div = document.createElement("div");
     div.classList.add("system");
+    document.cookie = `system=`+document.getElementById("jsonarea").value;
     var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsonarea").value))
     
     var div2 = document.getElementsByClassName("systemcontainer")[0];
@@ -2915,6 +3374,7 @@ function FirstPlanet(star){
         try {
         var div = document.createElement("div");
     div.classList.add("system");
+    document.cookie = `system=`+document.getElementById("jsonarea").value;
     var test_star = JSON.retrocycle(JSON.parse(document.getElementById("jsonarea").value))
     
     var div2 = document.getElementsByClassName("systemcontainer")[0];
@@ -2974,6 +3434,11 @@ function FirstPlanet(star){
 
 
         if(system.isStar){
+            if(system.name == undefined){
+                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: Salibe",divMain,"h3",true);
+            }else{
+                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: "+toTitleCase(system.name),divMain,"h3",true);
+            }
             var desc = "STATUS: HABITABLE (according to like, half of sci-fi books for some reason)</p> <hr> <p>";
             var l0 = lumaToMass(system.luma);
             if(l0<0.4){
@@ -3029,11 +3494,7 @@ function FirstPlanet(star){
 
 
             div.classList.add("systemStarTall");
-            if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: Salibe",divMain,"h3",true);
-            }else{
-                addline("<img class='icon2 whiteicon' src='img/iconClassG.png'>STAR: "+toTitleCase(system.name),divMain,"h3",true);
-            }
+
             
             if(system.WD){
                 var l1 = lumaToMass(system.luma);
@@ -3093,6 +3554,24 @@ function FirstPlanet(star){
             }
             
         } else if (system.isPlanet){
+            if(system.parentbody.isStar && system.mass >= 0.01){
+                if(system.name == undefined){
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: Salibe",divMain,"h3",true);
+            }else{
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: "+toTitleCase(system.name),divMain,"h3",true);
+            }} else if (!system.parentbody.isStar ) {
+                if(system.name == undefined){
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>SATELLITE PLANET: Salibe",divMain,"h3",true);
+            }else{
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>SATELLITE PLANET: "+toTitleCase(system.name),divMain,"h3",true);
+            }
+            } else {
+                if(system.name == undefined){
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>DWARF PLANET: Salibe",divMain,"h3",true);
+            }else{
+                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>DWARF PLANET: "+toTitleCase(system.name),divMain,"h3",true);
+            }
+            }
             if(system.liquid==1 && system.liquidCoverage){
                 var desc = "STATUS: HABITABLE (for something, at least)</p> <hr> <p>";
             } else
@@ -3320,11 +3799,6 @@ if(system.atmothickness >= 0.1){
 
 
             if(system.parentbody.isStar && system.mass >= 0.01){
-                if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: Salibe",divMain,"h3",true);
-            }else{
-                addline("<img class='icon2 whiteicon' src='img/iconUberplanet.png'>MAJOR PLANET: "+toTitleCase(system.name),divMain,"h3",true);
-            }
             
             try {
                 addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",divMain,"p",true)
@@ -3349,11 +3823,6 @@ if(system.atmothickness >= 0.1){
                 }
                 
             } else if(!(system.parentbody.isStar)){
-                if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: Salibe",divMain,"h3",true);
-            }else{
-                addline("<img class='icon2 whiteicon' src='img/iconSatellite.png'>SATELLITE PLANET: "+toTitleCase(system.name),divMain,"h3",true);
-            }
                 addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from planet: " + distanceFromParent(system).toFixed(5) + " AU (" + (AUToKm(distanceFromParent(system))/radius(system.parentbody)).toFixed(5) + " planetary radii)",divMain,"p",true)
                 
                 addline("<img class='icon whiteicon' src='img/iconSystem.png'> Month: " + (OrbitToYear(distanceFromParent(system),system.parentbody.mass/333000)*365).toFixed(2) + " days",divMain,"p",true)
@@ -3368,11 +3837,6 @@ if(system.atmothickness >= 0.1){
                     addline("<img class='icon whiteicon' src='img/iconSatellite.png'> <span class='red'> Planet does not contain tidal locking information! Add tidalLock property to JSON</span>",divMain,"p",true)
                 }
             } else {
-                if(system.name == undefined){
-                addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: Salibe",divMain,"h3",true);
-            }else{
-                addline("<img class='icon2 whiteicon' src='img/iconUnterplanet.png'>DWARF PLANET: "+toTitleCase(system.name),divMain,"h3",true);
-            }
                 addline("<img class='icon whiteicon' src='img/iconDistance.png'> Distance from star: " + distanceFromParent(system).toFixed(5) + " AU ("+ system.AUSun.toFixed(3)+" AU☉)",divMain,"p",true)
                 if(system.parentbody.planets[0].isStar && system.parentbody.planets[0].AUSun <= 0.3){
                     var carykh = lumaToMass(system.parentbody.luma)+lumaToMass(system.parentbody.planets[0].luma)
@@ -3500,6 +3964,7 @@ if(system.atmothickness >= 0.1){
             if(system.civ){
                 addline("<img class='icon whiteicon' src='img/iconCivilization.png'><span class='purple'> Is a homeworld </span> ",divMain,"p",true)
             }
+            addline("<img class='icon whiteicon' src='img/iconComposition.png'> Similarity to Earth: "+(earthSimilarity(system)*100).toFixed(0)+"%",divMain,"p",true)
         }
             
 
