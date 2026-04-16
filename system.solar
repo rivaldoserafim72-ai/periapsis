@@ -21,6 +21,7 @@
 			"rock": 0.5,
 			"ice": 0,
 			"gas": 0,
+			"daycycles": 24,
 			"moons": []
 		},
 		{
@@ -38,25 +39,27 @@
 			"rock": 0.2,
 			"ice": 0.2,
 			"gas": 0,
+			"daycycles": 28,
 			"moons": [
-		        	{
-                                        "isPlanet": true,
-		        	        "isStar": false,
-		         	        "star": {
-			                 	"$ref": "$"
-		                 	},
-			                "parentbody": {
-			                 	"$ref": "$[\"planets\"][1]"
-			                },
-			                "mass": 0.004,
-		         	        "AUSun": 4,
-			                "metal": 0.6,
-		        	        "rock": 0.2,
-				        "ice": 0.2,
-				        "gas": 0,
-				        "distanceFromParent": 0.0003,
-             	                        "moons": []
-                                }
+				{
+					"isPlanet": true,
+					"isStar": false,
+					"star": {
+						"$ref": "$"
+					},
+					"parentbody": {
+						"$ref": "$[\"planets\"][1]"
+					},
+					"mass": 0.004,
+					"AUSun": 4,
+					"metal": 0.6,
+					"rock": 0.2,
+					"ice": 0.2,
+					"gas": 0,
+					"distanceFromParent": 0.0003,
+					"daycycles": 14,
+					"moons": []
+				}
 			]
 		}
 	]
